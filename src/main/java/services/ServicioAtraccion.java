@@ -10,6 +10,7 @@ public class ServicioAtraccion {
 	public List<Atraccion> listar() {
 		return DAOFactory.getAtraccionDAO().encontrarTodos();
 	}
+<<<<<<< HEAD
 	
 	public Atraccion find(Integer id) {
 		AtraccionDAO attractionDAO = DAOFactory.getAtraccionDAO();
@@ -23,4 +24,23 @@ public class ServicioAtraccion {
 	}
 	
 	
+=======
+	public Atraccion actualizar(Integer id, String nombre, Integer costo, Double tiempo, Integer cupo) {
+
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		Atraccion atraccion = atraccionDAO.encontrarPorNombre(nombre);
+
+		atraccion.setNombre(nombre);
+		atraccion.setCosto(costo);
+		atraccion.setTiempo(tiempo);
+		atraccion.setCupo(cupo);
+
+		//if (atraccion.isValid()) {
+			atraccionDAO.actualizarDatos(atraccion);
+		//} 
+
+		return atraccion;
+	}
+
+>>>>>>> fe26353c1d767d4f823dc239947f3a97573c643a
 }
