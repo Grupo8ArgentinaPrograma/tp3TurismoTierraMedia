@@ -5,10 +5,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<jsp:include page="partials/head.jsp"></jsp:include>
+
 </head>
-
-
 <body>
 
 	<header class="container-fluid header p-3">
@@ -21,8 +19,7 @@
 			<h2>
 				¡La aventura te espera  
 				<c:out value="${usuario.nombre}" />
-				!
-				
+
 				<h6>
 					Tiempo disponible: <c:out value="${usuario.tiempoDisponible}" />
 					Dinero disponible: <c:out value="${usuario.dineroDisponible}" />
@@ -31,7 +28,27 @@
 		</div>
 	</main>
 	
-	<!-- <jsp:include page="presentacion.jsp"></jsp:include> -->
+	>
+<div class="" >
+		<c:forEach items="${atracciones}" var="atracciones">
+			
+		
+			<div >
+				<img class="card-img-top" src="${atracciones.getImagen()}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title"><c:out value="${atracciones.getNombre()}"/> </h5>
+					<p class="card-text"><c:out value="${atracciones.getDescripcion()}"/></p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+				
+			</div>
+		
+		</c:forEach>
+</div>
+
+
+
+	
 	
 
 </body>
