@@ -9,7 +9,7 @@ public abstract class Ofertable {
 	private double tiempo;
 	private String descripcion;
 	private String imagen;
-
+	
 
 	
 	public Ofertable(String nombre, String tipo, double costo, double tiempo) {
@@ -53,7 +53,7 @@ public abstract class Ofertable {
 		return this.costo;
 	}
 
-	protected double getTiempoRecorrido() {
+	public double getTiempoRecorrido() {
 		return this.tiempo;
 	}
 
@@ -65,14 +65,14 @@ public abstract class Ofertable {
 		return this.nombre;
 	}
 
-	protected void setCosto(double costo) {
+	public void setCosto(double costo) {
 		if( costo < 0  ) {
 			throw new Error("El costo no puede ser negativo");
 		}
 		this.costo = costo;
 	}
 
-	protected void setTiempo(double tiempo) {
+	public void setTiempo(double tiempo) {
 
 		this.tiempo = tiempo;
 	}
@@ -86,6 +86,14 @@ public abstract class Ofertable {
 	}
 	
 	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
