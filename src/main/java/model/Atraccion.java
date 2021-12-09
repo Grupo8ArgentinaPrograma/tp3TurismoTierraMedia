@@ -44,4 +44,8 @@ public class Atraccion extends Ofertable {
 	public String toString() {
 		return super.toString();
 	}
+
+	public void setCupo(int cupo) {
+		this.cupo = cupo;
+	}
 }
