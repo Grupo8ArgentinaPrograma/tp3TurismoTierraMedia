@@ -20,8 +20,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		try {
 			String sql = "SELECT "
 					+ "Visitantes.id,visitantes.nombre,"
-					+ "Visitantes.dineroDisponible,Visitantes.tiempoDisponible,"
-					+ "TipoAtraccion.descripcion "
+					+ "Visitantes.dineroDisponible,"
+					+ "Visitantes.tiempoDisponible,"
+					+ "TipoAtraccion.descripcion,"
+					+ "Visitantes.password,"
+					+ "Visitantes.admin "
 					+ "FROM Visitantes "
 					+ "JOIN TipoAtraccion "
 					+ "on Visitantes.tipo_id = TipoAtraccion.id";
