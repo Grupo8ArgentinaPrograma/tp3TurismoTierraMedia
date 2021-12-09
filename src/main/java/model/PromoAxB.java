@@ -4,13 +4,13 @@ public class PromoAxB extends Promocion {
 
 	Atraccion atracciongratis = super.getItinerario()[super.getItinerario().length - 1];
 
-	public PromoAxB(String nombre, Atraccion[] paquete, String tipo) {
-		super(nombre, paquete, tipo);
+	public PromoAxB(String nombre, Atraccion[] paquete, String tipo,String descripcion,String imagen) {
+		super(nombre, paquete, tipo,descripcion,imagen);
 		super.setCosto(getCosto());
 	}
 	
-	public PromoAxB(String nombre, Atraccion[] paquete, String tipo,int descuento,int id) {
-		super(nombre, paquete, tipo,descuento,id);
+	public PromoAxB(String nombre, Atraccion[] paquete, String tipo,int descuento,int id,String descripcion,String imagen) {
+		super(nombre, paquete, tipo,descuento,id,descripcion,imagen);
 		super.setCosto(getCosto());
 	}
 
@@ -44,6 +44,6 @@ public class PromoAxB extends Promocion {
 
 	@Override
 	public String toString() {
-		return super.toString() + " Atracciones incluidas en la Promocion: " + super.getAtraccionesIncluidas() + "\n";
+		return super.toString() + " Atracciones incluidas en la Promocion: " + super.getAtraccionesIncluidas() + "\n"+super.getDescripcion()+"\n"+super.getImagen();
 	}
 }

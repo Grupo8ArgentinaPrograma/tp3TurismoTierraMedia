@@ -4,8 +4,8 @@ public class PromoPorcentual extends Promocion {
 
 	private int descuento;
 	
-	public PromoPorcentual(String nombre, Atraccion[] paquete, String tipo, int descuento) {
-		super(nombre, paquete, tipo,descuento);
+	public PromoPorcentual(String nombre, Atraccion[] paquete, String tipo, int descuento, String descripcion, String imagen) {
+		super(nombre, paquete, tipo,descuento,descripcion,imagen);
 		this.descuento = descuento;
 		super.setCosto(getCosto());
 		if (descuento < 0 || descuento > 100) {
@@ -16,8 +16,8 @@ public class PromoPorcentual extends Promocion {
 		}
 	}
 
-	public PromoPorcentual(String nombre, Atraccion[] paquete, String tipo, int descuento, int id) {
-		super(nombre, paquete, tipo,descuento,id);
+	public PromoPorcentual(String nombre, Atraccion[] paquete, String tipo, int descuento, int id, String descripcion, String imagen) {
+		super(nombre, paquete, tipo,descuento,id,descripcion,imagen);
 		this.descuento = descuento;
 		super.setCosto(getCosto());
 		if (descuento < 0 || descuento > 100) {
@@ -50,7 +50,7 @@ public class PromoPorcentual extends Promocion {
 
 	@Override
 	public String toString() {
-		return super.toString() + " Atracciones incluidas en la Promocion: " + super.getAtraccionesIncluidas() + "\n";
+		return super.toString() + " Atracciones incluidas en la Promocion: " + super.getAtraccionesIncluidas() + "\n" +super.getDescripcion()+"\n"+super.getImagen() ;
 	}
 
 	@Override

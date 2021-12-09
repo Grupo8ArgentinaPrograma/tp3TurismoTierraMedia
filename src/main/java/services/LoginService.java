@@ -12,9 +12,7 @@ public class LoginService {
 		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
 		Usuario usuario = usuarioDAO.encontrarPorNombre(username);
 		
-		System.out.println("DAOFactory");
-		System.out.println(username);
-		System.out.println(usuario);
+		
 		if(usuario.isNull() || !usuario.checkPassword(password)) {
 			usuario = NullUser.build();
 		}

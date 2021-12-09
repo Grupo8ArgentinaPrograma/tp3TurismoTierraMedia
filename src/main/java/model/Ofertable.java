@@ -7,9 +7,14 @@ public abstract class Ofertable {
 	private String tipo;
 	private double costo;
 	private double tiempo;
+	private String descripcion;
+	private String imagen;
 
+
+	
 	public Ofertable(String nombre, String tipo, double costo, double tiempo) {
-		this(nombre, tipo);
+		this.nombre = nombre;
+		this.tipo = tipo;
 		this.costo = costo;
 		this.tiempo = tiempo;
 
@@ -18,15 +23,22 @@ public abstract class Ofertable {
 		}
 	}
 
-	public Ofertable(int id,String nombre, String tipo, double costo, double tiempo) {
-		this(nombre, tipo, costo, tiempo);
+	public Ofertable(int id,String nombre, String tipo, double costo, double tiempo, String descripcion, String imagen) {
 		this.setId(id);
+		this.nombre=nombre;
+		this.tipo=tipo;
+		this.costo=costo;
+		this.tiempo=tiempo;
+		this.setDescripcion(descripcion);
+		this.imagen=imagen;
 		
 	}
 	
-	public Ofertable(String nombre, String tipo) {
+	public Ofertable(String nombre, String tipo, String descripcion,String imagen) {
 		this.nombre = nombre;
 		this.tipo = tipo;
+		this.descripcion=descripcion;
+		this.imagen=imagen;
 	}
 
 	abstract protected void ocuparLugar();
@@ -72,12 +84,28 @@ public abstract class Ofertable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
 
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}	
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 
 	@Override
 	public String toString() {
 		return "\n Nombre: " + nombre + " -- " + " Tipo: " + tipo + " -- " + " Costo: $" + costo + " -- " + " Tiempo:"
-				+ tiempo + " Hs" + "\n";
+				+ tiempo + " Hs" + "\n"+ getDescripcion();
 	}
 
 	@Override
@@ -103,5 +131,9 @@ public abstract class Ofertable {
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
-	}	
+	}
+
+	
+
+
 }

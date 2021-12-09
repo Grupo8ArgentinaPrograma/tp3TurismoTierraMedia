@@ -16,7 +16,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	public List<Atraccion> encontrarTodos() {
 		try {
-			String sql = "SELECT Atraccion.id,Atraccion.nombre,Atraccion.costo,Atraccion.tiempo,Atraccion.cupo, TipoAtraccion.descripcion FROM Atraccion JOIN TipoAtraccion on Atraccion.tipo_id = TipoAtraccion.id";
+			String sql = "SELECT Atraccion.id,Atraccion.nombre,Atraccion.costo,Atraccion.tiempo,Atraccion.cupo, TipoAtraccion.descripcion, Atraccion.descripcion,Atraccion.imagen FROM Atraccion JOIN TipoAtraccion on Atraccion.tipo_id = TipoAtraccion.id";
 			Connection conn = Conexion.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet resultados = statement.executeQuery();
@@ -50,7 +50,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	public int insertar(Atraccion Atraccion) {
 		try {
-			String sql = "INSERT INTO Atraccion (nombre,costo,tiempo,cupo,tipo_id) VALUES (?,?, ?, ?,(SELECT id FROM TipoAtraccion WHERE descripcion = ?))";
+			String sql = "INSERT INTO Atraccion (nombre,costo,tiempo,cupo,tipo_id,descripcion,imagen) VALUES (?,?, ?, ?,(SELECT id FROM TipoAtraccion WHERE descripcion = ?),?,?)";
 			Connection conn = Conexion.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -59,6 +59,8 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			statement.setDouble(3, Atraccion.getTiempo());
 			statement.setInt(4, Atraccion.getCupo());
 			statement.setString(5, Atraccion.getTipo());
+			statement.setString(6, Atraccion.getDescripcion());
+			statement.setString(7, Atraccion.getImagen());
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -69,7 +71,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 
 	public int actualizarDatos(Atraccion producto) {
 		try {
-			String sql = "UPDATE Atraccion SET nombre = ?,costo = ?, tiempo = ?, cupo = ?, tipo_id = (SELECT id FROM TipoAtraccion WHERE descripcion = ?) WHERE nombre = ?";
+			String sql = "UPDATE Atraccion SET nombre = ?,costo = ?, tiempo = ?, cupo = ?, tipo_id = (SELECT id FROM TipoAtraccion WHERE descripcion = ?),descripcion=?,imagen=? WHERE nombre = ?";
 			Connection conn = Conexion.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -78,7 +80,10 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 			statement.setDouble(3, producto.getTiempo());
 			statement.setInt(4, producto.getCupo());
 			statement.setString(5, producto.getTipo());
-			statement.setString(6, producto.getNombre());
+			statement.setString(6, producto.getDescripcion());
+			statement.setString(7, producto.getImagen());
+			statement.setString(8, producto.getNombre());
+			
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -104,7 +109,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	
 	public Atraccion encontrarPorNombre(String nombre) {
 		try {
-			String sql = "SELECT Atraccion.id,Atraccion.nombre,Atraccion.costo,Atraccion.tiempo,Atraccion.cupo, TipoAtraccion.descripcion FROM Atraccion JOIN TipoAtraccion on Atraccion.tipo_id = TipoAtraccion.id WHERE nombre = ?";
+			String sql = "SELECT Atraccion.id,Atraccion.nombre,Atraccion.costo,Atraccion.tiempo,Atraccion.cupo, TipoAtraccion.descripcion, Atraccion.descripcion,Atraccion.imagen FROM Atraccion JOIN TipoAtraccion on Atraccion.tipo_id = TipoAtraccion.id WHERE nombre = ?";
 			Connection conn = Conexion.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, nombre);
@@ -124,7 +129,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	
 	public Atraccion encontrarPorID(int ID) {
 		try {
-			String sql = "SELECT Atraccion.id,Atraccion.nombre,Atraccion.costo,Atraccion.tiempo,Atraccion.cupo, TipoAtraccion.descripcion FROM Atraccion JOIN TipoAtraccion on Atraccion.tipo_id = TipoAtraccion.id WHERE Atraccion.id = ?";
+			String sql = "SELECT Atraccion.id,Atraccion.nombre,Atraccion.costo,Atraccion.tiempo,Atraccion.cupo, TipoAtraccion.descripcion, Atraccion.descripcion,Atraccion.imagen FROM Atraccion JOIN TipoAtraccion on Atraccion.tipo_id = TipoAtraccion.id WHERE Atraccion.id = ?";
 			Connection conn = Conexion.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, ID);
@@ -143,6 +148,6 @@ public class AtraccionDAOImpl implements AtraccionDAO {
 	}
 	private Atraccion aAtraccion(ResultSet resultados) throws SQLException {
 		return new Atraccion(resultados.getInt(1),resultados.getString(2), resultados.getInt(3), resultados.getDouble(4),
-				resultados.getInt(5),resultados.getString(6));
+				resultados.getInt(5),resultados.getString(6),resultados.getString(7),resultados.getString(8));
 	}
 }

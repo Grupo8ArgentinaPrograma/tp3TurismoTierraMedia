@@ -81,7 +81,16 @@ public class Usuario {
 	public boolean estaAtraccionMegusta(Ofertable producto) {
 		return this.tipoPreferido.equals(producto.getTipo());
 	}
+	
+	public boolean checkPassword(String password) {
+		
+		return this.password.equals(password);
+	}
 
+	public boolean isNull() {
+		return false;
+	}
+	
 	public ArrayList<Ofertable> getproductosComprados() {
 		return this.productosComprados;
 	}
@@ -158,15 +167,7 @@ public class Usuario {
 				+ ", tiempoDisponible=" + tiempoDisponible + ", tipoPreferido=" + tipoPreferido + ", admin=" + admin
 				+ "]";
 	}
-	
-	public boolean checkPassword(String password) {
-		//return Crypt.match(password,this.password);
-		return true;
-	}
 
-	public boolean isNull() {
-		return false;
-	}
 
 
 }

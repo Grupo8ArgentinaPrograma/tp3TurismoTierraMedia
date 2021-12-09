@@ -4,8 +4,8 @@ public class PromoAbsoluta extends Promocion {
 
 	private double costo;
 	
-	public PromoAbsoluta(String nombre, Atraccion[]paquete,String tipo, double costo) {
-		super(nombre,paquete ,tipo);
+	public PromoAbsoluta(String nombre, Atraccion[]paquete,String tipo, double costo, String descripcion, String imagen) {
+		super(nombre,paquete ,tipo,descripcion,imagen);
 		this.costo = costo;
 		super.setCosto(costo);
 		if( costo < 0 ) {
@@ -13,8 +13,8 @@ public class PromoAbsoluta extends Promocion {
 		}
 	}
 	
-	public PromoAbsoluta(String nombre, Atraccion[]paquete,String tipo, double costo,int id) {
-		super(nombre,paquete ,tipo);
+	public PromoAbsoluta(String nombre, Atraccion[]paquete,String tipo, double costo,int id, String descripcion, String imagen) {
+		super(nombre,paquete ,tipo,descripcion,imagen);
 		super.setId(id);
 		this.costo = costo;
 		super.setCosto(costo);
@@ -42,6 +42,6 @@ public class PromoAbsoluta extends Promocion {
 
 	@Override
 	public String toString() {
-		return super.toString() + " Atracciones incluidas en la Promocion: " + super.getAtraccionesIncluidas() + "\n";
+		return super.toString() + " Atracciones incluidas en la Promocion: " + super.getAtraccionesIncluidas() + "\n"+super.getDescripcion()+"\n"+super.getImagen();
 	}
 }

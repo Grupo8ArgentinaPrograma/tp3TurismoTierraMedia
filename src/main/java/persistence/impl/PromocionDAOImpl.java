@@ -57,17 +57,19 @@ public class PromocionDAOImpl implements PromocionaDAO {
 
 	public int insertar(Promocion promocion){
 		try {
-			String sql = "INSERT INTO Promocion (nombre,descripcion,descuento,tipo_id,atraccion1_id,atraccion2_id,atraccion3_id) VALUES (?,?,?, (SELECT id FROM TipoAtraccion WHERE descripcion = ?),(SELECT id FROM Atraccion WHERE nombre=? ),(SELECT id FROM Atraccion WHERE nombre=? ),(SELECT id FROM Atraccion WHERE nombre=? ))";
+			String sql = "INSERT INTO Promocion (nombre,descripcion,descuento,tipo_id,atraccion1_id,atraccion2_id,atraccion3_id,imagen)VALUES (?,?,?,(SELECT id FROM TipoAtraccion WHERE descripcion = ?),(SELECT id FROM Atraccion WHERE nombre=? ),(SELECT id FROM Atraccion WHERE nombre=?),(SELECT id FROM Atraccion WHERE nombre=? ),?)";
 			Connection conn = Conexion.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setString(1, promocion.getNombre());
-			statement.setString(2, "");
+			statement.setString(2, promocion.getDescripcion());
 			statement.setDouble(3, promocion.getDescuento());
 			statement.setString(4, promocion.getTipo());
 			statement.setString(5, promocion.getAtraccionesIncluidas().get(0));
 			statement.setString(6, promocion.getAtraccionesIncluidas().get(1));
 			statement.setString(7, promocion.getAtraccionesIncluidas().get(2));
+			statement.setString(8, promocion.getImagen());
+			
 			int rows = statement.executeUpdate();
 			promocion.getAtraccionesIncluidas();
 			return rows;
@@ -76,9 +78,6 @@ public class PromocionDAOImpl implements PromocionaDAO {
 		}
 	}
 
-	
-	
-	
 	public int actualizarAtraccionesDeLasPromociones(Promocion promocion) {
 		
 		try {
@@ -102,18 +101,19 @@ public class PromocionDAOImpl implements PromocionaDAO {
 	
 	public int actualizarDatos(Promocion promocion){
 		try {
-			String sql = "UPDATE Promocion SET nombre = ?,descripcion = ?,descuento = ?,tipo_id = (SELECT id FROM TipoAtraccion WHERE descripcion = ?),atraccion1_id= (SELECT id FROM Atraccion WHERE nombre=?),atraccion2_id =(SELECT id FROM Atraccion WHERE nombre=?),atraccion3_id = (SELECT id FROM Atraccion WHERE nombre=?) WHERE id = ?";
+			String sql = "UPDATE Promocion SET nombre = ?,descripcion = ?,descuento = ?,tipo_id = (SELECT id FROM TipoAtraccion WHERE descripcion = ?),atraccion1_id= (SELECT id FROM Atraccion WHERE nombre=?),atraccion2_id =(SELECT id FROM Atraccion WHERE nombre=?),atraccion3_id = (SELECT id FROM Atraccion WHERE nombre=?),imagen=? WHERE id = ?";
 			Connection conn = Conexion.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 			
 			statement.setString(1, promocion.getNombre());
-			statement.setString(2,"");
+			statement.setString(2,promocion.getDescripcion());
 			statement.setDouble(3, promocion.getDescuento());
 			statement.setString(4, promocion.getTipo());
 			statement.setString(5, promocion.getAtraccionesIncluidas().get(0));
 			statement.setString(6, promocion.getAtraccionesIncluidas().get(1));
 			statement.setString(7, promocion.getAtraccionesIncluidas().get(2));
-			statement.setInt(8, promocion.getId());
+			statement.setString(8, promocion.getImagen());
+			statement.setInt(9, promocion.getId());
 		
 			int rows = statement.executeUpdate();
 
@@ -161,17 +161,19 @@ public class PromocionDAOImpl implements PromocionaDAO {
 	private Promocion aPromocion(ResultSet resultados) throws SQLException {
 
 		if (resultados.getString(2).equals("absoluta")) {
-			return new PromoAbsoluta(resultados.getString(3), crarPaquetes(resultados), resultados.getString(10),
-					resultados.getInt(4),resultados.getInt(1));
+			return new PromoAbsoluta(resultados.getString(2), crarPaquetes(resultados), resultados.getString(11),
+					resultados.getInt(4),resultados.getInt(1),resultados.getString(3),resultados.getString(9));
 		}
 
 		if (resultados.getString(2).equals("axb")) {
-			return new PromoAxB(resultados.getString(3), crarPaquetes(resultados), resultados.getString(10),resultados.getInt(1),resultados.getInt(1));
+			return new PromoAxB(resultados.getString(2), crarPaquetes(resultados), resultados.getString(11),
+					resultados.getInt(4),resultados.getInt(1),resultados.getString(3),resultados.getString(9));
+			
 		}
 
 		if (resultados.getString(2).equals("porcentual")) {
-			return new PromoPorcentual(resultados.getString(3), crarPaquetes(resultados), resultados.getString(10),
-					resultados.getInt(4),resultados.getInt(1));
+			return new PromoPorcentual(resultados.getString(2), crarPaquetes(resultados), resultados.getString(11),
+					resultados.getInt(4),resultados.getInt(1),resultados.getString(3),resultados.getString(9));
 		}
 		return null;
 	}

@@ -9,16 +9,17 @@ public abstract class Promocion extends Ofertable {
 	private int id;
 	private int descuento;
 	
-	public Promocion(String nombre, Atraccion[] paquete, String tipo) {
-		super(nombre, tipo);
+	
+	public Promocion(String nombre, Atraccion[] paquete, String tipo,String descripcion,String imagen) {
+		super(nombre, tipo,descripcion,imagen);
 		this.itinerario = paquete;
 		this.atraccionesIncluidas = new ArrayList<String>();
 		super.setTiempo(getTiempoRecorrido());
 		this.setAtraccionesIncluidas();
 	}
 	
-	public Promocion(String nombre, Atraccion[] paquete, String tipo, int descuento) {
-		super(nombre, tipo);
+	public Promocion(String nombre, Atraccion[] paquete, String tipo, int descuento,String descripcion,String imagen) {
+		super(nombre, tipo,descripcion,imagen);
 		this.setDescuento(descuento);
 		this.itinerario = paquete;
 		this.atraccionesIncluidas = new ArrayList<String>();
@@ -26,8 +27,8 @@ public abstract class Promocion extends Ofertable {
 		super.setTiempo(getTiempoRecorrido());
 	}
 	
-	public Promocion(String nombre, Atraccion[] paquete, String tipo, int descuento, int id) {
-		super(nombre, tipo);
+	public Promocion(String nombre, Atraccion[] paquete, String tipo, int descuento, int id,String descripcion,String imagen) {
+		super(nombre, tipo,descripcion,imagen);
 		this.setDescuento(descuento);
 		this.itinerario = paquete;
 		this.atraccionesIncluidas = new ArrayList<String>();

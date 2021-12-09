@@ -11,8 +11,6 @@
 
 <body>
 
-	
-
 	<header class="container-fluid header p-3">
 		<div class="separador p-2"></div>
 		<jsp:include page="partials/navUsuario.jsp"></jsp:include>
@@ -26,14 +24,15 @@
 				!
 				
 				<h6>
-				Tiempo disponible: <c:out value="${usuario.tiempoDisponible}" />
-				Dinero disponible: <c:out value="${usuario.dineroDisponible}" />
+					Tiempo disponible: <c:out value="${usuario.tiempoDisponible}" />
+					Dinero disponible: <c:out value="${usuario.dineroDisponible}" />
 				</h6>
 			</h2>
 		</div>
 	</main>
 	
-	<jsp:include page="presentacion.jsp"></jsp:include>
+	<!-- <jsp:include page="presentacion.jsp"></jsp:include> -->
+	
 
 </body>
 </html>

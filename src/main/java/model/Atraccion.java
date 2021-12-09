@@ -11,8 +11,8 @@ public class Atraccion extends Ofertable {
 		}
 	}
 	
-	public Atraccion(int id,String nombre, double costo, double tiempo, int cupo, String tipo) {
-		super(id,nombre, tipo, costo, tiempo);
+	public Atraccion(int id,String nombre, double costo, double tiempo, int cupo, String tipo,String descripcion,String imagen) {
+		super(id,nombre, tipo, costo, tiempo,descripcion,imagen);
 		this.cupo = cupo;
 		if (cupo < 0) {
 			throw new Error("Los valores ingresados no puede ser negativo");

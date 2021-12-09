@@ -33,15 +33,8 @@ public class LoginServlet extends HttpServlet {
 		
 		Usuario usuario = loginService.login(username, password);
 			
-		System.out.println("LoginServlet");
-		System.out.println(usuario.getNombre());
-		System.out.println(usuario.getTiempoDisponible());
-		System.out.println(usuario.getTipoPreferido());
-		System.out.println(usuario.getDineroDisponible());
 		
 		
-		
-		// redirigir según la respuesta
 		if (!usuario.isNull()) {
 			
 			req.getSession().setAttribute("usuario", usuario);
