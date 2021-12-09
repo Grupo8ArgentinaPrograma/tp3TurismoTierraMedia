@@ -6,6 +6,9 @@
 <html>
 <head>
 <jsp:include page="partials/head.jsp"></jsp:include>
+
+
+
 </head>
 
 <body>
@@ -43,6 +46,7 @@
 					<button type="submit" class="btn btn-ls btn-primary">Ingresar</button>
 				</div>
 			</form>
+			<img class="card-img-top" src="assets/img/TierraMedia2.jpg" alt="Card image cap">
 		</main>
 	</div>
 	<jsp:include page="partials/footer.jsp"></jsp:include>
