@@ -28,21 +28,17 @@
 		</div>
 	</main>
 	
-	>
+	
 <div class="" >
 		<c:forEach items="${atracciones}" var="atracciones">
 			
-		
-			<div >
 				<img class="card-img-top" src="${atracciones.getImagen()}" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"><c:out value="${atracciones.getNombre()}"/> </h5>
 					<p class="card-text"><c:out value="${atracciones.getDescripcion()}"/></p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
+					<a href="atracciones/detalles.do" class="btn btn-primary">Go somewhere</a>
 				</div>
-				
-			</div>
-		
+			<
 		</c:forEach>
 </div>
 
