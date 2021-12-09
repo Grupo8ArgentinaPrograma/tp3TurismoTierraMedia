@@ -116,7 +116,7 @@ public class Usuario {
 		return id;
 	}
 
-	protected String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
@@ -141,11 +141,11 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	protected void setDineroDisponible(double dineroDisponible) {
+	public void setDineroDisponible(double dineroDisponible) {
 		this.dineroDisponible = dineroDisponible;
 	}
 
-	protected void setTiempoDisponible(double tiempoDisponible) {
+	public void setTiempoDisponible(double tiempoDisponible) {
 		this.tiempoDisponible = tiempoDisponible;
 	}
 
@@ -153,7 +153,7 @@ public class Usuario {
 		this.tipoPreferido = tipoPreferido;
 	}
 
-	protected void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	

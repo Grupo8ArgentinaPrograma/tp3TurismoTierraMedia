@@ -5,8 +5,9 @@
 <head>
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
-<body>
+<body class="text-white bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
-	<h1>Pagina de administrador</h1>
+	<h1>Bienvenido al sistema de administración de Tierra Media</h1>
+	<p>Seleccione la acción que desee realizar desde la barra de navegación.</p>
 </body>
 </html>
