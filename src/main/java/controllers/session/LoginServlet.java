@@ -1,6 +1,7 @@
 package controllers.session;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
+import model.ComparaTor;
 import model.Usuario;
 import services.LoginService;
 import services.ServicioAtraccion;
@@ -38,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		
 		Usuario usuario = loginService.login(username, password);
 		List<Atraccion> atracciones = servicioAtracciom.listar(); 
-		
+		atracciones.sort(new ComparaTor()); 
 		
 		if (!usuario.isNull()) {
 			
