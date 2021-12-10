@@ -27,11 +27,12 @@ public class ServletDetallesAtraccion extends HttpServlet implements Servlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Atraccion> atracciones = servicioAtraccion.listar();
+		String nombre = req.getParameter("nombre");
+		Atraccion atracciones = servicioAtraccion.encontrarPorNombre(nombre);
 		req.setAttribute("atracciones", atracciones);
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/atracciones/index.jsp");
+				.getRequestDispatcher("/views/atracciones/AtraccionDetalles.jsp");
 		dispatcher.forward(req, resp);
 
-	}
+	}	
 }
