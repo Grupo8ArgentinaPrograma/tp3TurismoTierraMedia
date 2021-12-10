@@ -26,4 +26,13 @@ public class ServicioUsuario {
 		return usuario;
 	}
 	
+	public static Usuario agregar(String nombre, int dineroDisponible, double tiempoDisponible, String tipoPreferido, int id, String password, int admin) {
+		Usuario usuario = new Usuario(nombre, dineroDisponible, tiempoDisponible, tipoPreferido, id, password, admin);
+		
+		UsuarioDAO usuarioDAO = DAOFactory.getUsuarioDAO();
+		usuarioDAO.insertar(usuario);
+		
+		return usuario;
+	}
+	
 }

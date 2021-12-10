@@ -120,7 +120,7 @@ public class Usuario {
 		return password;
 	}
 
-	protected int getAdmin() {
+	public int getAdmin() {
 		return admin;
 	}
 

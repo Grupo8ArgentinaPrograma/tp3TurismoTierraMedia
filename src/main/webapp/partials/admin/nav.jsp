@@ -17,7 +17,7 @@
 						<li><a class="dropdown-item"
 							href="/tierraMedia/admin/atracciones/index.do">Atracciones</a></li>
 						<li><a class="dropdown-item" href="/tierraMedia/admin/usuarios/index.do">Usuarios</a></li>
-						<li><a class="dropdown-item" href="#">Promociones</a></li>
+						<!-- <li><a class="dropdown-item" href="#">Promociones</a></li> -->
 					</ul></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#"
@@ -27,7 +27,7 @@
 						<li><a class="dropdown-item"
 							href="/tierraMedia/admin/edit/atraccion/index.do">Atracciones</a></li>
 						<li><a class="dropdown-item" href="/tierraMedia/admin/edit/usuario/index.do">Usuarios</a></li>
-						<li><a class="dropdown-item" href="#">Promociones</a></li>
+						<!--  <li><a class="dropdown-item" href="#">Promociones</a></li> -->
 					</ul></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#"
@@ -35,10 +35,20 @@
 					aria-expanded="false">Agregar</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item"
+							href="/tierraMedia/admin/add/atraccion/index.do">Atracciones</a></li>
+						<li><a class="dropdown-item" href="/tierraMedia/admin/add/usuario/index.do">Usuarios</a></li>
+						<!-- <li><a class="dropdown-item" href="#">Promociones</a></li> -->
+					</ul></li>
+					
+					<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+					aria-expanded="false">Eliminar</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<li><a class="dropdown-item"
 							href="/tierraMedia/usuarios/index.do">Atracciones</a></li>
 						<li><a class="dropdown-item" href="#">Usuarios</a></li>
-						<li><a class="dropdown-item" href="#">Promociones</a></li>
-
+						<!--  <li><a class="dropdown-item" href="#">Promociones</a></li> -->
 					</ul></li>
 
 			</ul>

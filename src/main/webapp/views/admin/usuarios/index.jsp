@@ -6,7 +6,7 @@
 <head>
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
-<body class="bg-dark">
+<body class="text-white bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
 	<table class="table table-dark">
 		<thead>
@@ -17,19 +17,31 @@
 				<th>Dinero disponible</th>
 				<th>Tiempo disponible</th>
 				<th>Tipo preferido</th>
+				<th>Tipo de usuario</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${usuarios}" var="usuario">
-					<tr>
-						<td><c:out value="${usuario.id}"></c:out></td>
-						<td><strong><c:out value="${usuario.nombre}"></c:out></strong></td>
-						<td><c:out value="${usuario.password}"></c:out></td>
-						<td><c:out value="${usuario.dineroDisponible}"></c:out> monedas</td>
-						<td><c:out value="${usuario.tiempoDisponible}"></c:out> hs</td>
-						<td><c:out value="${usuario.tipoPreferido}"></c:out></td>
-					</tr>
-				</c:forEach>
+				<tr>
+					<td><c:out value="${usuario.id}"></c:out></td>
+					<td><strong><c:out value="${usuario.nombre}"></c:out></strong></td>
+					<td><c:out value="${usuario.password}"></c:out></td>
+					<td><c:out value="${usuario.dineroDisponible}"></c:out>
+						monedas</td>
+					<td><c:out value="${usuario.tiempoDisponible}"></c:out> hs</td>
+					<td><c:out value="${usuario.tipoPreferido}"></c:out></td>
+					<td>
+					<c:choose>
+						<c:when test="${usuario.admin == 1}">
+    						Administrador
+  						</c:when>
+  						<c:when test="${usuario.admin == 0}">
+    						Usuario
+  						</c:when>
+					</c:choose>
+					</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 

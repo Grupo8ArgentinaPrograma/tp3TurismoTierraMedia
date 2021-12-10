@@ -61,7 +61,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	public int insertar(Usuario usuario) {
 		try {
-			String sql = "INSERT INTO Visitantes (nombre,dineroDisponible,tiempoDisponible,tipo_id) VALUES (?,?, ?, (SELECT id FROM TipoAtraccion WHERE descripcion = ?))";
+			String sql = "INSERT INTO Visitantes (nombre,dineroDisponible,tiempoDisponible,tipo_id,password,admin) VALUES (?,?, ?, (SELECT id FROM TipoAtraccion WHERE descripcion = ?),?,?)";
 			Connection conn = Conexion.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -69,6 +69,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			statement.setDouble(2, usuario.getDineroDisponible());
 			statement.setDouble(3, usuario.getTiempoDisponible());
 			statement.setString(4, usuario.getTipoPreferido());
+			statement.setString(5, usuario.getPassword());
+			statement.setInt(6, usuario.getAdmin());
 			int rows = statement.executeUpdate();
 
 			return rows;

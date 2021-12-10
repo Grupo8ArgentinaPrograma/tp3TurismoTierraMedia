@@ -41,14 +41,19 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		if (!usuario.isNull()) {
+			if (usuario.getAdmin() == 0) {
+				req.getSession().setAttribute("usuario", usuario);
+				req.getSession().setAttribute("atracciones",atracciones);
+				
+				RequestDispatcher dispatcher = getServletContext()
+						.getRequestDispatcher("/index.jsp");
+				dispatcher.forward(req, resp);
+			}else if (usuario.getAdmin() == 1) {
+				RequestDispatcher dispatcher = getServletContext()
+						.getRequestDispatcher("/views/admin/index.jsp");
+				dispatcher.forward(req, resp);
+			}
 			
-			req.getSession().setAttribute("usuario", usuario);
-			req.getSession().setAttribute("atracciones",atracciones);
-			
-			
-			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/index.jsp");
-			dispatcher.forward(req, resp);
 
 			
 			

@@ -22,7 +22,7 @@ public abstract class Ofertable {
 			throw new Error("Los valores ingresados no puede ser negativo");
 		}
 	}
-
+	
 	public Ofertable(int id,String nombre, String tipo, double costo, double tiempo, String descripcion, String imagen) {
 		this.setId(id);
 		this.nombre=nombre;
