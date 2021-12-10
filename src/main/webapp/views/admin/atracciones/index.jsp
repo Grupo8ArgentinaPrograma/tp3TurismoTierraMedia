@@ -6,14 +6,15 @@
 <head>
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
-<body class="bg-dark">
+<body class="text-white bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
 	<table class="table table-dark">
 		<thead>
 			<tr>
-				<th>Atraccion</th>
+				<th>Atracción</th>
+				<th>Tipo de atracción</th>
 				<th>Costo</th>
-				<th>Duracion</th>
+				<th>Duración</th>
 				<th>Cupo</th>
 			</tr>
 		</thead>
@@ -21,7 +22,8 @@
 			<c:forEach items="${atracciones}" var="atraccion">
 					<tr>
 						<td><strong><c:out value="${atraccion.nombre}"></c:out></strong>
-							<p>DESCRIPCION.</p></td>
+							<p><c:out value="${atraccion.descripcion}"></c:out></p></td>
+						<td><c:out value="${atraccion.tipo}"></c:out></td>
 						<td><c:out value="${atraccion.costo}"></c:out> monedas</td>
 						<td><c:out value="${atraccion.tiempo}"></c:out> hs</td>
 						<td><c:out value="${atraccion.cupo}"></c:out></td>

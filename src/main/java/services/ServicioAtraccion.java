@@ -23,8 +23,6 @@ public class ServicioAtraccion {
 	return attractionDAO.encontrarPorNombre(nombre);
 	}
 	
-	
-
 	public static Atraccion actualizar(String nombre, double costo, double tiempo, int cupo) {
 
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
@@ -40,6 +38,14 @@ public class ServicioAtraccion {
 
 		return atraccion;
 	}
-
+	public static Atraccion agregar(int id, String nombre, double costo, double tiempo, int cupo, String tipo,String descripcion, String imagen) {
+		
+		Atraccion atraccion = new Atraccion(id, nombre, costo, tiempo, cupo, tipo, descripcion, imagen);
+		
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		atraccionDAO.insertar(atraccion);
+		
+		return atraccion;
+	}
 
 }

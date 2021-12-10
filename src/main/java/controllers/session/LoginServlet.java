@@ -43,16 +43,18 @@ public class LoginServlet extends HttpServlet {
 		atracciones.sort(new ComparaTor()); 
 		
 		if (!usuario.isNull()) {
-			
-			req.getSession().setAttribute("usuario", usuario);
-			req.getSession().setAttribute("atracciones",atracciones);
-			
-			
-			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/index.jsp");
-			dispatcher.forward(req, resp);
-
-			
+			if (usuario.getAdmin() == 0) {
+				req.getSession().setAttribute("usuario", usuario);
+				req.getSession().setAttribute("atracciones",atracciones);
+				
+				RequestDispatcher dispatcher = getServletContext()
+						.getRequestDispatcher("/index.jsp");
+				dispatcher.forward(req, resp);
+			}else if (usuario.getAdmin() == 1) {
+				RequestDispatcher dispatcher = getServletContext()
+						.getRequestDispatcher("/views/admin/index.jsp");
+				dispatcher.forward(req, resp);
+			}	
 			
 		} else {
 			req.setAttribute("flash", "Nombre de usuario o contraseña incorrectos");

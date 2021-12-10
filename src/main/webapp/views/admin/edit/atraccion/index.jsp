@@ -6,7 +6,7 @@
 <head>
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
-<body>
+<body class="text-white bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
 	<form action="/tierraMedia/admin/edit/atraccion/index.do" method="post">
 		<div class="form-group mb-3">
@@ -33,7 +33,7 @@
 				id="cupo" type="text" name="cupo" required"/>
 		</div>
 		
-		<button type="submit" class="btn btn-dark">Enviar</button>
+		<button type="submit" class="btn btn-warning">Enviar</button>
 	</form>
 </body>
 </html>
