@@ -25,11 +25,10 @@ public class ServicioAtraccion {
 	
 	
 
-	public Atraccion actualizar(Integer id, String nombre, Integer costo, Double tiempo, Integer cupo) {
+	public static Atraccion actualizar(String nombre, double costo, double tiempo, int cupo) {
 
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		Atraccion atraccion = atraccionDAO.encontrarPorNombre(nombre);
-
 		atraccion.setNombre(nombre);
 		atraccion.setCosto(costo);
 		atraccion.setTiempo(tiempo);

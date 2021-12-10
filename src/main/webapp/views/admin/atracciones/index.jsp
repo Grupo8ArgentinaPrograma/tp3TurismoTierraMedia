@@ -6,7 +6,7 @@
 <head>
 <jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
-<body>
+<body class="bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
 	<table class="table table-dark">
 		<thead>

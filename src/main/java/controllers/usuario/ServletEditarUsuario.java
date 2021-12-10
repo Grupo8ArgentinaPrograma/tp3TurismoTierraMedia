@@ -1,4 +1,4 @@
-package controllers.atraccion;
+package controllers.usuario;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,41 +10,44 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Atraccion;
-import services.ServicioAtraccion;
+import model.Usuario;
+import services.ServicioUsuario;
 
-@WebServlet("/admin/edit/atraccion/index.do")
-public class ServletEditarAtraccion extends HttpServlet implements Servlet {
-	
-	private static final long serialVersionUID = -3891118851848932955L;
-	private ServicioAtraccion servicioAtraccion;
+@WebServlet("/admin/edit/usuario/index.do")
+public class ServletEditarUsuario extends HttpServlet implements Servlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8653128287405525058L;
+	private ServicioUsuario servicioUsuario;
 	
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.servicioAtraccion = new ServicioAtraccion();
+		this.servicioUsuario = new ServicioUsuario();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Atraccion> atracciones = servicioAtraccion.listar();
-		req.setAttribute("atracciones", atracciones);
+		List<Usuario> usuarios = servicioUsuario.listar();
+		req.setAttribute("usuarios", usuarios);
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/admin/edit/atraccion/index.jsp");
+				.getRequestDispatcher("/views/admin/edit/usuario/index.jsp");
 		dispatcher.forward(req, resp);
 
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nombre = req.getParameter("nombre");
-		double costo = Double.parseDouble(req.getParameter("costo"));
-		double tiempo = Double.parseDouble(req.getParameter("tiempo"));
-		int cupo = Integer.parseInt(req.getParameter("cupo"));
+		double dineroDisponible = Double.parseDouble(req.getParameter("dineroDisponible"));
+		double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
+		String password = req.getParameter("password");
 		
-		Atraccion atraccion = ServicioAtraccion.actualizar(nombre, costo, tiempo, cupo);
+		Usuario usuario = ServicioUsuario.actualizar(nombre, dineroDisponible, tiempoDisponible, password);
 
 		//if (attraction.isValid()) {
-			resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
+			resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
 		//} else {
 			//req.setAttribute("attraction", attraction);
 

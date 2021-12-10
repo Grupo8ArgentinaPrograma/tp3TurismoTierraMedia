@@ -8,11 +8,32 @@
 </head>
 <body>
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
-	<select class="form-select" aria-label="Default select example">
-		<option selected>Elija una atraccion</option>
-		<c:forEach items="${atracciones}" var="atraccion">
-			<option value="${atraccion.nombre}"><c:out value="${atraccion.nombre}"></c:out></option>
-		</c:forEach>
-	</select>
+	<form action="/tierraMedia/admin/edit/atraccion/index.do" method="post">
+		<div class="form-group mb-3">
+			<label for="nombre">Atracción: </label> <select
+				class="form-select" aria-label="Default select example" name="nombre">
+				<option selected>Elija una atraccion</option>
+				<c:forEach items="${atracciones}" var="atraccion">
+					<option value="${atraccion.nombre}"><c:out
+							value="${atraccion.nombre}"></c:out></option>
+				</c:forEach>
+			</select>
+		</div>
+
+		<div class="form-group mb-3">
+			<label for="costo">Costo:</label> <input class="form-control"
+				id="costo" type="text" name="costo" required"/>
+		</div>
+		<div class="form-group mb-3">
+			<label for="tiempo">Duración:</label> <input class="form-control"
+				id="tiempo" type="text" name="tiempo" required"/>
+		</div>
+		<div class="form-group mb-3">
+			<label for="cupo">Cupo:</label> <input class="form-control"
+				id="cupo" type="text" name="cupo" required"/>
+		</div>
+		
+		<button type="submit" class="btn btn-dark">Enviar</button>
+	</form>
 </body>
 </html>
