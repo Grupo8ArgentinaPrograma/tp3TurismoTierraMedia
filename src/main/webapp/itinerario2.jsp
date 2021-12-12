@@ -17,7 +17,6 @@
 
 <body>
 	
-	
 	<header style="margin-bottom: 50px">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light">
@@ -53,7 +52,10 @@
 
 	</header>
 	
-	
+		<c:choose>
+				<c:when test="${usuario.getProductosComprados().size() > 0 }">
+					
+			
 	
 <main class="container" style="margin-bottom: 50px">
 		<div class="bg-light p-4 rounded d-flex flex-wrap flex-column  align-items-center">
@@ -74,6 +76,7 @@
 						<div class="card-body">
 							<h6 class="card-title" style="text-align:center" >
 								<c:out value="${atracciones.getNombre()}" />
+								
 							</h6>
 	
 						</div>
@@ -82,7 +85,11 @@
 			</c:forEach>
 </div>
 
-	
+		</c:when>
+				<c:otherwise>
+					<h1 style="text-align: center;">Aún no se han registrado compras</h1>
+				</c:otherwise>
+			</c:choose>
 
 
 

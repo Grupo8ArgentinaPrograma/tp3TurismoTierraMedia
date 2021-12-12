@@ -12,9 +12,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
 import model.ComparaTor;
+import model.Promocion;
 import model.Usuario;
 import services.LoginService;
 import services.ServicioAtraccion;
+import services.ServicioPromocionMau;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -22,12 +24,14 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 7426414066105522340L;
 	private LoginService loginService;
 	private ServicioAtraccion servicioAtracciom;
+	private ServicioPromocionMau servicioPromocionMau;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		loginService = new LoginService();
 		servicioAtracciom= new ServicioAtraccion();
+		servicioPromocionMau= new ServicioPromocionMau();
 	}
 
 	@Override
@@ -42,10 +46,15 @@ public class LoginServlet extends HttpServlet {
 		List<Atraccion> atracciones = servicioAtracciom.listar(); 
 		atracciones.sort(new ComparaTor()); 
 		
+		List<Promocion>promociones = servicioPromocionMau.listar();
+		atracciones.sort(new ComparaTor());
+		
+		
 		if (!usuario.isNull()) {
 			if (usuario.getAdmin() == 0) {
 				req.getSession().setAttribute("usuario", usuario);
 				req.getSession().setAttribute("atracciones",atracciones);
+				req.getSession().setAttribute("promociones",promociones);
 				
 				RequestDispatcher dispatcher = getServletContext()
 						.getRequestDispatcher("/index.jsp");

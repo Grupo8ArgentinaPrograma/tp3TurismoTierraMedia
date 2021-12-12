@@ -32,7 +32,7 @@
 
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/tierraMedia/itinerario2.jsp">
-								Atracciones</a>
+								Itinerario</a>
 						
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/tierraMedia/logout">Logout</a></li>
@@ -77,20 +77,23 @@
 						
 			
 						
-						<c:forEach items="${atracciones}" var="atracciones">
-										
+						<c:forEach items="${promociones}" var="atracciones">
+						<c:if test="${usuario.estaAtraccionMegusta(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()&&!usuario.atraccionYaComprada(atracciones)}">		
 						<div class="carousel-item">
 							<img src="${atracciones.getImagen()}" class="d-block w-100" width="620px" height="450px">
 							<div class="carousel-caption d-none d-md-block">
-								<h2><c:out value="${atracciones.getNombre()}"></c:out></h2>
-								<form action="atracciones/index.do" method="get">
+								<h2><c:out value="${atracciones.getDescripcion()}"></c:out></h2>
+								<form action="promo/index.do" method="get">
+									<input type="hidden" name="id" value="${atracciones.getId()}">
+									<input type="hidden" name="user" value="${usuario.getNombre()}">
 									<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
 									<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
 								</form>
 							</div>
 							
 						</div>
-						
+							
+						</c:if>
 						</c:forEach>	
 						
 						
@@ -115,7 +118,7 @@
 		<div class="d-flex flex-wrap justify-content-around">
 	
 			<c:forEach items="${atracciones}" var="atracciones">
-			<c:if test="${usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()}">
+			<c:if test="${usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()&&!usuario.atraccionIncluidaEnPromocionComprada(atracciones)}">
 				<div class="card  align-self-center" style="margin-bottom: 30px; ">
 					<form action="atracciones/index.do" method="get">
 						
@@ -134,10 +137,40 @@
 			</c:forEach>
 		</div>
 		
+		<hr>
+		<h3 style="text-align: center;">Otros productos,que tal vez te interesen!</h3>
+		<hr>
+		
+		
+		<div class="d-flex flex-wrap justify-content-around">
+	
+			<c:forEach items="${promociones}" var="atracciones">
+			<c:if test="${!usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()&&!usuario.atraccionIncluidaEnPromocionComprada(atracciones)}">
+				<div class="card  align-self-center" style="margin-bottom: 30px; ">
+					<form action="promo/index.do" method="get">
+						<input type="hidden" name="id" value="${atracciones.getId()}">
+						<input type="hidden" name="user" value="${usuario.getNombre()}">
+						<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
+						<img class="card-img-top" src="${atracciones.getImagen()}"	alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title" style="text-align:center" >
+								<c:out value="${atracciones.getDescripcion()}" />
+								$<c:out value="${atracciones.getCosto()}" />
+							</h5>
+							<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
+						</div>
+					</form>
+				</div>
+				</c:if>
+			</c:forEach>
+		</div>
+		
+
+		
 		<div class="d-flex flex-wrap justify-content-around">
 	
 			<c:forEach items="${atracciones}" var="atracciones">
-			<c:if test="${!usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()}">
+			<c:if test="${!usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()&&!usuario.atraccionIncluidaEnPromocionComprada(atracciones)}">
 				<div class="card  align-self-center" style="margin-bottom: 30px; ">
 					<form action="atracciones/index.do" method="get">
 						<input type="hidden" name="id" value="${atracciones.getId()}">
@@ -157,7 +190,6 @@
 			</c:forEach>
 		</div>
 </div>
-	
 </body>
 <jsp:include page="/partials/footer.jsp"></jsp:include>
 

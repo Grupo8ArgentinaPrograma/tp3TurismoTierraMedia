@@ -41,12 +41,13 @@
 
 	</header>
 
+
 <body >
-<div class="d-flex flex-column  align-items-center col-lg-5 mx-auto p-3 py-md-5">
+<div class="d-flex flex-column  align-items-center col-lg-5 mx-auto p-3 py-md-5" >
 	
 	<h1 class="card-title"><c:out value="${atracciones.getNombre()}"/> </h1>
 	
-	<img  src="${atracciones.getImagen()}" style="margin: 40px" alt="Card image cap">
+	<img  src="${atracciones.getImagen()}" style="margin: 40px; width:100%; height: 100% " alt="Card image cap">
 	
 	<p class="card-text"><c:out value="${atracciones.getDescripcion()}"/></p>
 	<h3>Costo recorrido</h3>
@@ -55,11 +56,36 @@
 	<p class="card-text"><c:out value="${atracciones.getTiempoRecorrido()}"/></p>
 	<h3>Tipo de recorrido</h3>
 	<p class="card-text"><c:out value="${atracciones.getTipo()}"/></p>
+	<h3 style="text-align: center;">Atracciones incluidas</h3>
+</div>
+
+
+
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+		<div class="d-flex flex-wrap justify-content-around">
 	
-	
-	
-		
-		<form action="../atraccions/comprar.do" method="get">
+			<c:forEach items="${atracciones.getItinerario()}" var="atraccion">
+			
+				<div class="card  align-self-center" style="margin-bottom: 30px; ">
+					<form action="atracciones/index.do" method="get">
+						
+						<input type="hidden" name="nombre" value="${atraccion.getNombre()}"> 
+						<img class="card-img-top" src="${atraccion.getImagen()}"	alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title" style="text-align:center" >
+								<c:out value="${atraccion.getNombre()}" />
+								
+							</h5>
+							
+						</div>
+					</form>
+				</div>
+				
+			</c:forEach>
+		</div>
+
+<div >
+		<form action="../promo/comprar.do" method="get">
 			<input type="hidden" name="id" value="${atracciones.getId()}">
 			<input type="hidden" name="user" value="${usuario.getNombre()}">
 			<input type="hidden" name="nombre" value="${atracciones.getNombre()}">
@@ -71,10 +97,10 @@
 			
 		</form>	
 </div>	
-			
-			
-			
+		
+		
 </body>
+<footer>
 <jsp:include page="/partials/footer.jsp"></jsp:include>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</footer>
 </html>
