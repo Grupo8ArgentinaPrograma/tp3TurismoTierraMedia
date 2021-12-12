@@ -11,22 +11,19 @@
 	<table class="table table-dark">
 		<thead>
 			<tr>
-				<th>Atracción</th>
-				<th>Tipo de atracción</th>
-				<th>Costo</th>
-				<th>Duración</th>
-				<th>Cupo</th>
+				<th>Tipo de promocion</th>
+				<th>Nombre</th>
+				<th>Descuento</th>
+				<th>Atracciones incluidas</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${promociones}" var="promocion">
 					<tr>
-						<td><strong><c:out value="${atraccion.nombre}"></c:out></strong>
-							<p><c:out value="${atraccion.descripcion}"></c:out></p></td>
-						<td><c:out value="${atraccion.tipo}"></c:out></td>
-						<td><c:out value="${atraccion.costo}"></c:out> monedas</td>
-						<td><c:out value="${atraccion.tiempo}"></c:out> hs</td>
-						<td><c:out value="${atraccion.cupo}"></c:out></td>
+						<td><strong><c:out value="${promocion.nombre}"></c:out></strong></td>
+						<td><c:out value="${promocion.descripcion}"></c:out></td>
+						<td><c:out value="${promocion.descuento}"></c:out></td>
+						<td><c:out value="${promocion.atraccionesIncluidas.toString()}"></c:out></td>
 					</tr>
 				</c:forEach>
 		</tbody>

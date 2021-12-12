@@ -17,7 +17,7 @@
 						<li><a class="dropdown-item"
 							href="/tierraMedia/admin/atracciones/index.do">Atracciones</a></li>
 						<li><a class="dropdown-item" href="/tierraMedia/admin/usuarios/index.do">Usuarios</a></li>
-						<!-- <li><a class="dropdown-item" href="#">Promociones</a></li> -->
+						<li><a class="dropdown-item" href="/tierraMedia/admin/promociones/index.do">Promociones</a></li>
 					</ul></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#"
