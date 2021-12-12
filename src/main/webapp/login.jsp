@@ -27,7 +27,7 @@
 					<p>
 						<c:out value="${flash}" />
 					</p>
-					p>
+					
 				</div>
 			</c:if>
 
@@ -49,6 +49,7 @@
 			<img class="card-img-top" src="assets/img/TierraMedia2.jpg" alt="Card image cap">
 		</main>
 	</div>
-	<jsp:include page="partials/footer.jsp"></jsp:include>
+	
 </body>
+<jsp:include page="partials/footer.jsp"></jsp:include>
 </html>

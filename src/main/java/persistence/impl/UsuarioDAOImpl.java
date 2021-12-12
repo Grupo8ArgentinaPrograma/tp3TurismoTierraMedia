@@ -104,6 +104,26 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 
+	
+	public int actualizarDatosDos(Usuario usuario) {
+		try {
+			String sql = "UPDATE Visitantes SET dineroDisponible = ?, tiempoDisponible = ?  WHERE nombre = ?";
+			Connection conn = Conexion.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setDouble(1, usuario.getDineroDisponible());
+			statement.setDouble(2, usuario.getTiempoDisponible());
+			statement.setString(3, usuario.getNombre());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
+	
 	public int borrar(Usuario usuario) {
 		try {
 			String sql = "DELETE FROM Visitantes WHERE id = ?";
@@ -146,6 +166,37 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	
+	public Usuario encontrarPorId(Integer id) {
+		try {
+			String sql = "SELECT Visitantes.id,visitantes.nombre,"
+					+ "Visitantes.dineroDisponible,Visitantes.tiempoDisponible," 
+					+ "TipoAtraccion.descripcion, Visitantes.password,"
+					+ "Visitantes.admin "
+					+ "FROM Visitantes " 
+					+ "JOIN TipoAtraccion " 
+					+ "on Visitantes.tipo_id = TipoAtraccion.id "
+					+ "WHERE Visitantes.id = ?";
+			Connection conn = Conexion.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+		
+			statement.setLong(1, id);
+			ResultSet resultados = statement.executeQuery();
+
+			Usuario user =  NullUser.build();
+
+			if (resultados.next()) {
+				user = aUsuario(resultados);
+			}
+			return user;
+			
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
 
 	private Usuario aUsuario(ResultSet resultados) throws SQLException {
 		ItineraioDAOImpl itiDAO = DAOFactory.getItinerarioDaoImpl();

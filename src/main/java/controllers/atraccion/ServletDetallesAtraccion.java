@@ -28,9 +28,10 @@ public class ServletDetallesAtraccion extends HttpServlet implements Servlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nombre = req.getParameter("nombre");
 		Atraccion atracciones = servicioAtraccion.encontrarPorNombre(nombre);
+		
 		req.setAttribute("atracciones", atracciones);
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/atracciones/AtraccionDetalles.jsp");
+				.getRequestDispatcher("/AtraccionDetalles.jsp");
 		dispatcher.forward(req, resp);
 
 	}	

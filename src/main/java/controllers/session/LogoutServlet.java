@@ -17,7 +17,7 @@ public class LogoutServlet extends HttpServlet {
 	@Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	req.getSession().removeAttribute("usuario");
-		req.setAttribute("flash", "Â¡Hasta pronto!");
+		req.setAttribute("flash", "¡Hasta pronto!");
 		
 		RequestDispatcher dispatcher = getServletContext()
   		      .getRequestDispatcher("/login.jsp");

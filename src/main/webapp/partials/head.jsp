@@ -15,7 +15,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" href="assets/stylesheets/estilos.css">
+<link rel="stylesheet" href="tierraMedia/assets/stylesheets/estilos.css">
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script
