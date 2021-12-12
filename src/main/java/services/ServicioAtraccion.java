@@ -38,7 +38,7 @@ public class ServicioAtraccion {
 
 		return atraccion;
 	}
-	public Atraccion agregar(int id, String nombre, double costo, double tiempo, int cupo, String tipo,String descripcion, String imagen) {
+	public static Atraccion agregar(int id, String nombre, double costo, double tiempo, int cupo, String tipo,String descripcion, String imagen) {
 		
 		Atraccion atraccion = new Atraccion(id, nombre, costo, tiempo, cupo, tipo, descripcion, imagen);
 		

@@ -11,8 +11,8 @@
 	<form action="/tierraMedia/admin/delete/usuario/index.do" method="post">
 		<div class="form-group mb-3">
 			<label for="nombre">Usuario: </label> <select
-				class="form-select" aria-label="Default select example" name="nombre">
-				<option selected>Elija un usuario a eliminar</option>
+				class="form-select" aria-label="Default select example" name="nombre" required>
+				<option selected disabled value="">Elija un usuario a eliminar</option>
 				<c:forEach items="${usuarios}" var="usuario">
 					<option value="${usuario.nombre}"><c:out
 							value="${usuario.nombre}"></c:out></option>

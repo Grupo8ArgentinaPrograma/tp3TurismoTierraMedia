@@ -11,8 +11,8 @@
 	<form action="/tierraMedia/admin/delete/atraccion/index.do" method="post">
 		<div class="form-group mb-3">
 			<label for="nombre">Atracción: </label> <select
-				class="form-select" aria-label="Default select example" name="nombre">
-				<option selected>Elija una atracción a eliminar</option>
+				class="form-select" aria-label="Default select example" name="nombre" required>
+				<option selected disabled value="">Elija una atracción a eliminar</option>
 				<c:forEach items="${atracciones}" var="atraccion">
 					<option value="${atraccion.nombre}"><c:out
 							value="${atraccion.nombre}"></c:out></option>
