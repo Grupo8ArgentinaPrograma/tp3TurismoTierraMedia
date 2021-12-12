@@ -35,7 +35,7 @@
 								Atracciones</a>
 						
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/tierraMedia/login.jsp"> Login</a></li>
+							aria-current="page" href="/tierraMedia/logout">Logout</a></li>
 					</ul>
 				</div>
 
@@ -43,18 +43,17 @@
 		</div>
 
 	</header>
-
-	<main class="container">
-		<div class="bg-light p-4 rounded">
-			<h2>
-				¡La aventura te espera  
-				<c:out value="${usuario.nombre}" />
-
-				<h6>
-					Tiempo disponible: <c:out value="${usuario.tiempoDisponible}" />
-					Dinero disponible: <c:out value="${usuario.dineroDisponible}" />
-				</h6>
+	
+	<main class="container" style="margin-bottom: 50px">
+		<div class="bg-light p-4 rounded d-flex flex-wrap flex-column  align-items-center">
+			<h2>¡La aventura te espera  
+				<c:out value="${usuario.nombre}!" />
 			</h2>
+			<h6>
+				Tiempo disponible: <c:out value="${usuario.tiempoDisponible}" />
+				Dinero disponible: <c:out value="${usuario.dineroDisponible}" />
+			</h6>
+			
 		</div>
 	</main>
 
@@ -116,7 +115,7 @@
 		<div class="d-flex flex-wrap justify-content-around">
 	
 			<c:forEach items="${atracciones}" var="atracciones">
-			<c:if test="${usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)}">
+			<c:if test="${usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()}">
 				<div class="card  align-self-center" style="margin-bottom: 30px; ">
 					<form action="atracciones/index.do" method="get">
 						
@@ -138,7 +137,7 @@
 		<div class="d-flex flex-wrap justify-content-around">
 	
 			<c:forEach items="${atracciones}" var="atracciones">
-			<c:if test="${!usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)}">
+			<c:if test="${!usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)&&usuario.puedoPagar(atracciones)&&usuario.tengoTiempo(atracciones)&&atracciones.tieneCupo()}">
 				<div class="card  align-self-center" style="margin-bottom: 30px; ">
 					<form action="atracciones/index.do" method="get">
 						<input type="hidden" name="id" value="${atracciones.getId()}">
@@ -158,7 +157,6 @@
 			</c:forEach>
 		</div>
 </div>
-	
 	
 </body>
 <jsp:include page="/partials/footer.jsp"></jsp:include>

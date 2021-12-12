@@ -44,7 +44,7 @@
 								Seguir comprando</a>
 						
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/tierraMedia/login.jsp"> Login</a></li>
+							aria-current="page" href="/tierraMedia/logout">Logout</a></li>
 					</ul>
 				</div>
 

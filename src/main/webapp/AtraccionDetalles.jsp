@@ -27,18 +27,12 @@
 
 				<div class="collapse navbar-collapse text-dark" id="navbarNav">
 					<ul class="navbar-nav">
-
-						<li class="nav-item"><a class="nav-link active"
-							href="#ubicacion">Ubicación</a></li>
-
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/tierraMedia/atracciones/index.do">
 								Atracciones</a>
+				
 						<li class="nav-item"><a class="nav-link active"
-							href="#contacto">Contacto</a></li>
-
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/tierraMedia/login.jsp"> Login</a></li>
+							aria-current="page" href="/tierraMedia/logout">Logout</a></li>
 					</ul>
 				</div>
 

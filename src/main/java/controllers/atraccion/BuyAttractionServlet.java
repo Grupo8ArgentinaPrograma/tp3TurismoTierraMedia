@@ -32,15 +32,15 @@ public class BuyAttractionServlet extends HttpServlet {
 
 		Integer attractionId = Integer.parseInt(req.getParameter("id"));
 		Usuario user =  usuario.encontrarPorNombre(req.getParameter("user"));
-		System.out.println(user);
-		System.out.println(req.getParameter("id"));
-		System.out.println(user.getId());
 		
 		Map<String, String> errors = buyAttractionService.buy(user.getId(), attractionId);
 		
+		
 		Usuario user2 = DAOFactory.getUsuarioDAO().encontrarPorId(user.getId());
-	
-		req.getSession().setAttribute("user", user2);
+		
+		
+		
+		req.getSession().setAttribute("usuario", user2);
 		
 		if (errors.isEmpty()) {
 			req.setAttribute("flash", "¡Gracias por comprar!");

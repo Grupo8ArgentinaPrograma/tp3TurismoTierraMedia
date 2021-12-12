@@ -3,7 +3,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="#"> <img
 			<%--src="img/2Logo_AventurasTM_Fondo_Blanco_Logo.png" --%>
-		src="/assets/img/2Logo_AventurasTM_Fondo_Blanco_Logo.png"
+		src="assets/img/2Logo_AventurasTM_Fondo_Blanco_Logo.png"
 			alt="Logo Tierra Media" height="40">
 		</a>
 		<h1 class="text-uppercase m-0 ">Turismo en
@@ -21,10 +21,6 @@
 
 				<li class="nav-item"><a class="nav-link active"
 					href="#ubicacion">Ubicación</a></li>
-					
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="/tierraMedia/atracciones/index.do">
-					Atracciones</a>
 					
 				<li class="nav-item"><a class="nav-link active"
 					href="#contacto">Contacto</a></li>

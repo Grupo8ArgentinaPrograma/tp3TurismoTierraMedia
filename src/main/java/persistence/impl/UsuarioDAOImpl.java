@@ -104,6 +104,26 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 
+	
+	public int actualizarDatosDos(Usuario usuario) {
+		try {
+			String sql = "UPDATE Visitantes SET dineroDisponible = ?, tiempoDisponible = ?  WHERE nombre = ?";
+			Connection conn = Conexion.getConnection();
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setDouble(1, usuario.getDineroDisponible());
+			statement.setDouble(2, usuario.getTiempoDisponible());
+			statement.setString(3, usuario.getNombre());
+			int rows = statement.executeUpdate();
+
+			return rows;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
+	
 	public int borrar(Usuario usuario) {
 		try {
 			String sql = "DELETE FROM Visitantes WHERE id = ?";

@@ -92,6 +92,15 @@ public class Usuario {
 		return this.tipoPreferido.equals(producto.getTipo());
 	}
 	
+	public boolean puedoPagar(Ofertable producto) {
+		return this.dineroDisponible>=producto.getCosto();
+	}
+	
+	
+	public boolean tengoTiempo(Ofertable producto) {
+		return this.tiempoDisponible>=producto.getTiempoRecorrido();
+	}
+	
 	public boolean checkPassword(String password) {
 		
 		return this.password.equals(password);

@@ -28,7 +28,6 @@ public class ServletDetallesAtraccion extends HttpServlet implements Servlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nombre = req.getParameter("nombre");
-		System.out.println(nombre);
 		Atraccion atracciones = servicioAtraccion.encontrarPorNombre(nombre);
 		
 		req.setAttribute("atracciones", atracciones);

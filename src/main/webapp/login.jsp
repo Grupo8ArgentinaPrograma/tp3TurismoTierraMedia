@@ -27,7 +27,7 @@
 					<p>
 						<c:out value="${flash}" />
 					</p>
-					p>
+					
 				</div>
 			</c:if>
 

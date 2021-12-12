@@ -15,13 +15,14 @@ public class BuyAttractionService {
 	UsuarioDAOImpl userDAO = (UsuarioDAOImpl) DAOFactory.getUsuarioDAO();
 	ItineraioDAOImpl itinerario = DAOFactory.getItinerarioDaoImpl();
 	
+	
+	
 	public Map<String, String> buy(Integer userId, Integer attractionId) {
 		Map<String, String> errors = new HashMap<String, String>();
 
 		Usuario user = userDAO.encontrarPorId(userId);
-		System.out.println(user);
 		Atraccion atraccion = atraccionDAO.encontrarPorID(attractionId);
-		System.out.println(atraccion);
+
 		if (!atraccion.tieneCupo()) {
 	
 			errors.put("attraction", "No hay cupo disponible");
@@ -33,13 +34,14 @@ public class BuyAttractionService {
 			errors.put("user", "No tienes tiempo suficiente");
 		}
 
+		
+		
 		if (errors.isEmpty()) { 
 			user.comprarProducto(atraccion);
-
 			atraccionDAO.actualizarDatos(atraccion);
-			userDAO.actualizarDatos(user);
+			userDAO.actualizarDatosDos(user);
 			itinerario.insertarEnItinerario(atraccion, user);
-			
+		
 		}
 
 		return errors;
