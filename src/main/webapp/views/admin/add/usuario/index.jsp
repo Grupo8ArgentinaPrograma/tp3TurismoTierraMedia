@@ -21,12 +21,12 @@
 
 		<div class="form-group mb-3">
 			<label for="dineroDisponible">Dinero disponible:</label> <input
-				class="form-control" id="dineroDisponible" type="text"
+				class="form-control" id="dineroDisponible" type="number"
 				name="dineroDisponible" required"/>
 		</div>
 		<div class="form-group mb-3">
 			<label for="tiempoDisponible">Tiempo disponible:</label> <input
-				class="form-control" id="tiempoDisponible" type="text"
+				class="form-control" id="tiempoDisponible" type="number"
 				name="tiempoDisponible" required"/>
 		</div>
 		<div class="form-group mb-3">

@@ -16,7 +16,7 @@
 	<form action="/tierraMedia/admin/add/atraccion/index.do" method="post">
 		<div class="form-group mb-3">
 			<label for="id">ID:</label> <input class="form-control" id="id"
-				type="text" name="id" required"/>
+				type="number" name="id" required"/>
 		</div>
 
 		<div class="form-group mb-3">
@@ -26,15 +26,15 @@
 
 		<div class="form-group mb-3">
 			<label for="costo">Costo:</label> <input class="form-control"
-				id="costo" type="text" name="costo" required"/>
+				id="number" type="text" name="costo" required"/>
 		</div>
 		<div class="form-group mb-3">
 			<label for="tiempo">Duración:</label> <input class="form-control"
-				id="tiempo" type="text" name="tiempo" required"/>
+				id="tiempo" type="number" name="tiempo" required"/>
 		</div>
 		<div class="form-group mb-3">
 			<label for="cupo">Cupo:</label> <input class="form-control" id="cupo"
-				type="text" name="cupo" required"/>
+				type="number" name="cupo" required"/>
 		</div>
 		<div class="form-group mb-3">
 			<label for="nombre">Tipo de atracción preferida: </label> <select

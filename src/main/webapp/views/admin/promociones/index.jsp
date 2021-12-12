@@ -13,6 +13,7 @@
 			<tr>
 				<th>Tipo de promocion</th>
 				<th>Nombre</th>
+				<th>Costo</th>
 				<th>Descuento</th>
 				<th>Atracciones incluidas</th>
 			</tr>
@@ -22,7 +23,8 @@
 					<tr>
 						<td><strong><c:out value="${promocion.nombre}"></c:out></strong></td>
 						<td><c:out value="${promocion.descripcion}"></c:out></td>
-						<td><c:out value="${promocion.descuento}"></c:out></td>
+						<td><c:out value="${promocion.costo}"></c:out></td>
+						<td><c:out value="${promocion.descuento} %"></c:out></td>
 						<td><c:out value="${promocion.atraccionesIncluidas.toString()}"></c:out></td>
 					</tr>
 				</c:forEach>

@@ -1,4 +1,7 @@
 bin
 .settings
+<<<<<<< HEAD
 .resources
 /target/
+=======
+>>>>>>> 7bc61f85b85f70383fc89870542f7e2014b0f6f1
