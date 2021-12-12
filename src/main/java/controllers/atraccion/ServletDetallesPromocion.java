@@ -11,30 +11,37 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
+import model.Promocion;
 import services.ServicioAtraccion;
+import services.ServicioPromocionMau;
 
-@WebServlet("/admin/atracciones/index.do")
-
-public class ServletAtraccion extends HttpServlet implements Servlet {
+@WebServlet("/promo/index.do")
+public class ServletDetallesPromocion extends HttpServlet implements Servlet {
 	
 	private static final long serialVersionUID = -3024831153119392589L;
-	private ServicioAtraccion servicioAtraccion;
+
+	private ServicioPromocionMau servicioPromocionMau;
+	
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		this.servicioAtraccion = new ServicioAtraccion();
+		
+		this.servicioPromocionMau = new ServicioPromocionMau();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Atraccion> atracciones = servicioAtraccion.listar();
-		req.setAttribute("atracciones", atracciones);
+	
+		Promocion promocion = servicioPromocionMau.find(Integer.parseInt(req.getParameter("id")));
+		
+		
+		
+		req.setAttribute("atracciones", promocion);
+		
 		RequestDispatcher dispatcher = getServletContext()
-
-				.getRequestDispatcher("/views/admin/atracciones/index.jsp");
-
+				.getRequestDispatcher("/PromoDetalles.jsp");
 		dispatcher.forward(req, resp);
 
-	}
+	}	
 }
