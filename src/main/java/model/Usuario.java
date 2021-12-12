@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 //import utils.Crypt;
@@ -15,6 +17,10 @@ public class Usuario {
 	private String password;
 	private int admin;
 
+	
+	private HashMap<String, String> errores;
+	
+	
 	private ArrayList<Ofertable> productosComprados;
 
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, String tipoPreferido, String password,
@@ -159,6 +165,26 @@ public class Usuario {
 	
 	protected void setAdmin(int admin) {
 		this.admin = admin;
+	}
+	
+	public boolean esValido() {
+		validar();
+		return errores.isEmpty();
+	}
+	
+	public void validar() {
+		errores = new HashMap<String, String>();
+
+		if (this.dineroDisponible < 0) {
+			errores.put("dineroDisponible", "No debe ser negativo");
+		}
+		if (this.tiempoDisponible < 0) {
+			errores.put("tiempoDisponible", "No debe ser negativo");
+		}
+	}
+	
+	public Map<String, String> getErrores() {
+		return errores;
 	}
 
 	@Override

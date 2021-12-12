@@ -1,7 +1,6 @@
 package controllers.atraccion;
 
 import java.io.IOException;
-import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
@@ -43,7 +42,17 @@ public class ServletAgregarAtraccion extends HttpServlet implements Servlet {
 		String descripcion = req.getParameter("descripcion");
 		String imagen = req.getParameter("imagen");
 		
-		Atraccion atraccion = ServicioAtraccion.agregar(id,nombre, costo, tiempo, cupo, tipo, descripcion, imagen);
-		resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
+		Atraccion atraccion = servicioAtraccion.agregar(id,nombre, costo, tiempo, cupo, tipo, descripcion, imagen);
+		
+		
+		if (atraccion.esValida()) {
+			resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
+		} else {
+			req.setAttribute("atraccion", atraccion);
+
+			RequestDispatcher dispatcher = getServletContext()
+					.getRequestDispatcher("/views/admin/add/atraccion/index.jsp");
+			dispatcher.forward(req, resp);
+		}
 	}
 }

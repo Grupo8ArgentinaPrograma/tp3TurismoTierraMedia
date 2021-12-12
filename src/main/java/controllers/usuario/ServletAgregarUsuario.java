@@ -41,7 +41,17 @@ public class ServletAgregarUsuario extends HttpServlet implements Servlet {
 		int id = Integer.parseInt(req.getParameter("id"));
 		String password = req.getParameter("password");
 		int admin = Integer.parseInt(req.getParameter("admin"));
-		Usuario usuario = ServicioUsuario.agregar(nombre, dineroDisponible, tiempoDisponible, tipo, id, password, admin);
-		resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
+		
+		Usuario usuario = servicioUsuario.agregar(nombre, dineroDisponible, tiempoDisponible, tipo, id, password, admin);
+		
+		if (usuario.esValido()) {
+			resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
+		} else {
+			req.setAttribute("usuario", usuario);
+
+			RequestDispatcher dispatcher = getServletContext()
+					.getRequestDispatcher("/views/admin/add/usuario/index.jsp");
+			dispatcher.forward(req, resp);
+		}
 	}
 }

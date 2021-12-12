@@ -46,8 +46,8 @@
 					aria-expanded="false">Eliminar</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item"
-							href="/tierraMedia/usuarios/index.do">Atracciones</a></li>
-						<li><a class="dropdown-item" href="#">Usuarios</a></li>
+							href="/tierraMedia/admin/delete/atraccion/index.do">Atracciones</a></li>
+						<li><a class="dropdown-item" href="/tierraMedia/admin/delete/usuario/index.do">Usuarios</a></li>
 						<!--  <li><a class="dropdown-item" href="#">Promociones</a></li> -->
 					</ul></li>
 

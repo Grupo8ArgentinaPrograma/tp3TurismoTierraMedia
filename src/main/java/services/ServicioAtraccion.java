@@ -23,28 +23,38 @@ public class ServicioAtraccion {
 	return attractionDAO.encontrarPorNombre(nombre);
 	}
 	
-	public static Atraccion actualizar(String nombre, double costo, double tiempo, int cupo) {
+	public Atraccion actualizar(String nombre, double costo, double tiempo, int cupo) {
 
 		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
 		Atraccion atraccion = atraccionDAO.encontrarPorNombre(nombre);
-		atraccion.setNombre(nombre);
+		
 		atraccion.setCosto(costo);
 		atraccion.setTiempo(tiempo);
 		atraccion.setCupo(cupo);
 
-		//if (atraccion.isValid()) {
+		if (atraccion.esValida()) {
 			atraccionDAO.actualizarDatos(atraccion);
-		//} 
+		} 
 
 		return atraccion;
 	}
-	public static Atraccion agregar(int id, String nombre, double costo, double tiempo, int cupo, String tipo,String descripcion, String imagen) {
+	public Atraccion agregar(int id, String nombre, double costo, double tiempo, int cupo, String tipo,String descripcion, String imagen) {
 		
 		Atraccion atraccion = new Atraccion(id, nombre, costo, tiempo, cupo, tipo, descripcion, imagen);
 		
-		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
-		atraccionDAO.insertar(atraccion);
+		if (atraccion.esValida()) {
+			AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+			atraccionDAO.insertar(atraccion);
+		}
 		
+		return atraccion;
+	}
+	
+	public Atraccion eliminar(String nombre) {
+		AtraccionDAO atraccionDAO = DAOFactory.getAtraccionDAO();
+		Atraccion atraccion = atraccionDAO.encontrarPorNombre(nombre);
+		
+		atraccionDAO.borrar(atraccion);
 		return atraccion;
 	}
 

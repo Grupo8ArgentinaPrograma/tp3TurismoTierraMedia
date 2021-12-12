@@ -8,6 +8,11 @@
 </head>
 <body class="text-white bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
+	<c:if test="${atraccion != null && !atraccion.esValida()}">
+		<div class="alert alert-danger">
+			<p>Error.</p>
+		</div>
+	</c:if>
 	<form action="/tierraMedia/admin/add/atraccion/index.do" method="post">
 		<div class="form-group mb-3">
 			<label for="id">ID:</label> <input class="form-control" id="id"
@@ -50,7 +55,7 @@
 				class="form-control" id="imagen" type="text" name="imagen" required"/>
 		</div>
 
-		<button type="submit" class="btn btn-warning">Enviar</button>
+		<button type="submit" class="btn btn-warning">Agregar</button>
 	</form>
 </body>
 </html>

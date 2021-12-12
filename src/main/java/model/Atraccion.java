@@ -1,7 +1,12 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Atraccion extends Ofertable {
 	private int cupo;
+	
+	private Map<String, String> errores;
 
 	public Atraccion(String nombre, double costo, double tiempo, int cupo, String tipo) {
 		super(nombre, tipo, costo, tiempo);
@@ -38,7 +43,33 @@ public class Atraccion extends Ofertable {
 	public double getCosto() {
 		return super.getCosto();
 	}
+	
+	public Map<String, String> getErrores() {
+		return errores;
+	}
+	
+	public boolean esValida() {
+		validar();
+		return errores.isEmpty();
+	}
+	
+	public void validar() {
+		errores = new HashMap<String, String>();
 
+		if (super.getCosto() <= 0) {
+			errores.put("costo", "Debe ser positivo");
+		}
+		if (super.getTiempo() <= 0) {
+			errores.put("tiempo", "Debe ser positivo");
+		}
+		if (super.getTiempo() > 60) {
+			errores.put("tiempo", "Excede el tiempo máximo");
+		}
+		if (this.cupo <= 0) {
+			errores.put("cupo", "Debe ser positivo");
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString();

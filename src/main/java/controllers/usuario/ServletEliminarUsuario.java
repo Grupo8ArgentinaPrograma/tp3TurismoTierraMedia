@@ -13,15 +13,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import services.ServicioUsuario;
 
-@WebServlet("/admin/edit/usuario/index.do")
-public class ServletEditarUsuario extends HttpServlet implements Servlet {
+@WebServlet("/admin/delete/usuario/index.do")
+public class ServletEliminarUsuario extends HttpServlet implements Servlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8653128287405525058L;
+	private static final long serialVersionUID = 1132310538598705820L;
 	private ServicioUsuario servicioUsuario;
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -32,28 +32,16 @@ public class ServletEditarUsuario extends HttpServlet implements Servlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Usuario> usuarios = servicioUsuario.listar();
 		req.setAttribute("usuarios", usuarios);
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/admin/edit/usuario/index.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/views/admin/delete/usuario/index.jsp");
 		dispatcher.forward(req, resp);
-
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nombre = req.getParameter("nombre");
-		double dineroDisponible = Double.parseDouble(req.getParameter("dineroDisponible"));
-		double tiempoDisponible = Double.parseDouble(req.getParameter("tiempoDisponible"));
-		String password = req.getParameter("password");
 		
-		Usuario usuario = servicioUsuario.actualizar(nombre, dineroDisponible, tiempoDisponible, password);
-
-		if (usuario.esValido()) {
-			resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
-		} else {
-			req.setAttribute("usuario", usuario);
-
-			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/views/admin/edit/usuario/index.jsp");
-			dispatcher.forward(req, resp);
-		}
+		servicioUsuario.eliminar(nombre);
+		
+		resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
 	}
 }

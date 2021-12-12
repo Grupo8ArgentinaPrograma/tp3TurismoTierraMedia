@@ -54,7 +54,7 @@
 			<label class="form-check-label" for="admin">Usuario</label>
 		</div> <br>
 
-		<button type="submit" class="btn btn-warning">Enviar</button>
+		<button type="submit" class="btn btn-warning">Agregar</button>
 	</form>
 </body>
 </html>

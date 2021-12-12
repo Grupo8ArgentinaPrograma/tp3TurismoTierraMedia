@@ -13,10 +13,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
 import services.ServicioAtraccion;
 
-@WebServlet("/admin/edit/atraccion/index.do")
-public class ServletEditarAtraccion extends HttpServlet implements Servlet {
-	
-	private static final long serialVersionUID = -3891118851848932955L;
+
+@WebServlet("/admin/delete/atraccion/index.do")
+public class ServletEliminarAtraccion extends HttpServlet implements Servlet {
+
+	private static final long serialVersionUID = -7009029642364092898L;
 	private ServicioAtraccion servicioAtraccion;
 	
 	@Override
@@ -24,33 +25,23 @@ public class ServletEditarAtraccion extends HttpServlet implements Servlet {
 		super.init();
 		this.servicioAtraccion = new ServicioAtraccion();
 	}
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Atraccion> atracciones = servicioAtraccion.listar();
 		req.setAttribute("atracciones", atracciones);
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/admin/edit/atraccion/index.jsp");
+				.getRequestDispatcher("/views/admin/delete/atraccion/index.jsp");
 		dispatcher.forward(req, resp);
-
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nombre = req.getParameter("nombre");
-		double costo = Double.parseDouble(req.getParameter("costo"));
-		double tiempo = Double.parseDouble(req.getParameter("tiempo"));
-		int cupo = Integer.parseInt(req.getParameter("cupo"));
 		
-		Atraccion atraccion = servicioAtraccion.actualizar(nombre, costo, tiempo, cupo);
+		servicioAtraccion.eliminar(nombre);
 
-		if (atraccion.esValida()) {
-			resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
-		} else {
-			req.setAttribute("atraccion", atraccion);
+		resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
 
-			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/views/admin/edit/atraccion/edit.jsp");
-			dispatcher.forward(req, resp);
-		}
 	}
 }

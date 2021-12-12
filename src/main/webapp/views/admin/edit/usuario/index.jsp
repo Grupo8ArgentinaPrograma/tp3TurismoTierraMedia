@@ -33,7 +33,7 @@
 				id="password" type="text" name="password" required"/>
 		</div>
 		
-		<button type="submit" class="btn btn-warning">Enviar</button>
+		<button type="submit" class="btn btn-warning">Editar</button>
 	</form>
 </body>
 </html>
