@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<jsp:include page="/partials/head.jsp"></jsp:include>
+<jsp:include page="/partials/head2.jsp"></jsp:include>
 </head>
 <body>
 

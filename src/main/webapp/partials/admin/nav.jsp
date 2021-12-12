@@ -15,9 +15,11 @@
 					aria-expanded="false">Ver</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item"
-							href="/tierraMedia/admin/atracciones/index.do">Atracciones</a></li>
-						<li><a class="dropdown-item" href="/tierraMedia/admin/usuarios/index.do">Usuarios</a></li>
-						<li><a class="dropdown-item" href="/tierraMedia/admin/promociones/index.do">Promociones</a></li>
+							href="/tierraMedia/admin/atracciones/index.ad">Atracciones</a></li>
+						<li><a class="dropdown-item"
+							href="/tierraMedia/admin/usuarios/index.ad">Usuarios</a></li>
+						<li><a class="dropdown-item"
+							href="/tierraMedia/admin/promociones/index.ad">Promociones</a></li>
 					</ul></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#"
@@ -25,8 +27,9 @@
 					aria-expanded="false">Editar</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item"
-							href="/tierraMedia/admin/edit/atraccion/index.do">Atracciones</a></li>
-						<li><a class="dropdown-item" href="/tierraMedia/admin/edit/usuario/index.do">Usuarios</a></li>
+							href="/tierraMedia/admin/edit/atraccion/index.ad">Atracciones</a></li>
+						<li><a class="dropdown-item"
+							href="/tierraMedia/admin/edit/usuario/index.ad">Usuarios</a></li>
 						<!--  <li><a class="dropdown-item" href="#">Promociones</a></li> -->
 					</ul></li>
 				<li class="nav-item dropdown"><a
@@ -35,22 +38,25 @@
 					aria-expanded="false">Agregar</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item"
-							href="/tierraMedia/admin/add/atraccion/index.do">Atracciones</a></li>
-						<li><a class="dropdown-item" href="/tierraMedia/admin/add/usuario/index.do">Usuarios</a></li>
+							href="/tierraMedia/admin/add/atraccion/index.ad">Atracciones</a></li>
+						<li><a class="dropdown-item"
+							href="/tierraMedia/admin/add/usuario/index.ad">Usuarios</a></li>
 						<!-- <li><a class="dropdown-item" href="#">Promociones</a></li> -->
 					</ul></li>
-					
-					<li class="nav-item dropdown"><a
+
+				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#"
 					id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
 					aria-expanded="false">Eliminar</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li><a class="dropdown-item"
-							href="/tierraMedia/admin/delete/atraccion/index.do">Atracciones</a></li>
-						<li><a class="dropdown-item" href="/tierraMedia/admin/delete/usuario/index.do">Usuarios</a></li>
+							href="/tierraMedia/admin/delete/atraccion/index.ad">Atracciones</a></li>
+						<li><a class="dropdown-item"
+							href="/tierraMedia/admin/delete/usuario/index.ad">Usuarios</a></li>
 						<!--  <li><a class="dropdown-item" href="#">Promociones</a></li> -->
 					</ul></li>
 
+				<li class="nav-item"><a class="nav-link" href="/tierraMedia/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp"></jsp:include>
+<jsp:include page="/partials/head2.jsp"></jsp:include>
 </head>
 <body class="text-white bg-dark p-0">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>

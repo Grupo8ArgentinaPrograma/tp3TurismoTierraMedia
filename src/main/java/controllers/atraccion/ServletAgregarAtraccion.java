@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
 import services.ServicioAtraccion;
 
-@WebServlet("/admin/add/atraccion/index.do")
+@WebServlet("/admin/add/atraccion/index.ad")
 public class ServletAgregarAtraccion extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = -108130105150282254L;
@@ -46,7 +46,7 @@ public class ServletAgregarAtraccion extends HttpServlet implements Servlet {
 		
 		
 		if (atraccion.esValida()) {
-			resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
+			resp.sendRedirect("/tierraMedia/admin/atracciones/index.ad");
 		} else {
 			req.setAttribute("atraccion", atraccion);
 

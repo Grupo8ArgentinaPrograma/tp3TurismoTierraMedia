@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp"></jsp:include>
+<jsp:include page="/partials/head2.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>

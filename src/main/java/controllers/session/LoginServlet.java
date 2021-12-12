@@ -43,8 +43,8 @@ public class LoginServlet extends HttpServlet {
 		atracciones.sort(new ComparaTor()); 
 		
 		if (!usuario.isNull()) {
+			req.getSession().setAttribute("usuario", usuario);
 			if (usuario.getAdmin() == 0) {
-				req.getSession().setAttribute("usuario", usuario);
 				req.getSession().setAttribute("atracciones",atracciones);
 				
 				RequestDispatcher dispatcher = getServletContext()

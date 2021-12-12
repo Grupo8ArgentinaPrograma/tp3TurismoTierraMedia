@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp"></jsp:include>
+<jsp:include page="/partials/head2.jsp"></jsp:include>
 </head>
 <body class="text-white bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
-	<form action="/tierraMedia/admin/edit/atraccion/index.do" method="post">
+	<form action="/tierraMedia/admin/edit/atraccion/index.ad" method="post">
 		<div class="form-group mb-3">
 			<label for="nombre">Atracción: </label> <select
 				class="form-select" aria-label="Default select example" name="nombre" required>
@@ -22,7 +22,7 @@
 
 		<div class="form-group mb-3">
 			<label for="costo">Costo:</label> <input class="form-control"
-				id="costo" type="number" name="costo" required/>
+				id="costo" type="number" name="costo" required value="${atraccion.costo}"/>
 		</div>
 		<div class="form-group mb-3">
 			<label for="tiempo">Duración:</label> <input class="form-control"

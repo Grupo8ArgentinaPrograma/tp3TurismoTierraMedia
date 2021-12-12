@@ -14,7 +14,7 @@ import model.Promocion;
 import services.ServicioPromocion;
 
 
-@WebServlet("/admin/promociones/index.do")
+@WebServlet("/admin/promociones/index.ad")
 public class ServletPromocion extends HttpServlet implements Servlet {
 	/**
 	 * 

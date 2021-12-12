@@ -6,7 +6,7 @@
 <html>
 
 <head>
-<jsp:include page="partials/head.jsp"></jsp:include>
+<jsp:include page="partials/head2.jsp"></jsp:include>
 <link rel="stylesheet" href="assets/stylesheets/estilosPunto7.css"
 	type="text/css">
 <link href="http://fonts.googleapis.com/css?family=ABeeZee"

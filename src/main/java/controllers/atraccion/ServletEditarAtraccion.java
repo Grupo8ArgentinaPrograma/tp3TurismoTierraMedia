@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Atraccion;
 import services.ServicioAtraccion;
 
-@WebServlet("/admin/edit/atraccion/index.do")
+@WebServlet("/admin/edit/atraccion/index.ad")
 public class ServletEditarAtraccion extends HttpServlet implements Servlet {
 	
 	private static final long serialVersionUID = -3891118851848932955L;
@@ -44,7 +44,7 @@ public class ServletEditarAtraccion extends HttpServlet implements Servlet {
 		Atraccion atraccion = servicioAtraccion.actualizar(nombre, costo, tiempo, cupo);
 
 		if (atraccion.esValida()) {
-			resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
+			resp.sendRedirect("/tierraMedia/admin/atracciones/index.ad");
 		} else {
 			req.setAttribute("atraccion", atraccion);
 

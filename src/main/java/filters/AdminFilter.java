@@ -12,25 +12,26 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import model.Usuario;
 
-@WebFilter(urlPatterns = "*.do")
-public class LoggedFilter implements Filter {
+@WebFilter(urlPatterns = "*.ad")
+public class AdminFilter implements Filter {
 
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-
+		
 		Usuario usuario = (Usuario) ((HttpServletRequest) request)
 				.getSession()
 				.getAttribute("usuario");
-		if (usuario != null) {
+		if (usuario != null && usuario.getAdmin() == 1) {
 			chain.doFilter(request, response);
 		} else {
-			request.setAttribute("flash", "Por favor, ingresa al sistema");
-
 			RequestDispatcher dispatcher = request
 					.getServletContext()
-					.getRequestDispatcher("/login.jsp");
+					.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
 		}
 
 	}
+
 }
+

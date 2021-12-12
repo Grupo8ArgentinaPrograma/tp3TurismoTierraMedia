@@ -13,7 +13,7 @@ import model.Usuario;
 import services.ServicioUsuario;
 
 
-@WebServlet("/admin/add/usuario/index.do")
+@WebServlet("/admin/add/usuario/index.ad")
 public class ServletAgregarUsuario extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = 6935249543754728779L;
@@ -45,7 +45,7 @@ public class ServletAgregarUsuario extends HttpServlet implements Servlet {
 		Usuario usuario = servicioUsuario.agregar(nombre, dineroDisponible, tiempoDisponible, tipo, id, password, admin);
 		
 		if (usuario.esValido()) {
-			resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
+			resp.sendRedirect("/tierraMedia/admin/usuarios/index.ad");
 		} else {
 			req.setAttribute("usuario", usuario);
 

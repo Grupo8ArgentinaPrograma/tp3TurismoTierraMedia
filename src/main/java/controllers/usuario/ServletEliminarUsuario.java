@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import services.ServicioUsuario;
 
-@WebServlet("/admin/delete/usuario/index.do")
+@WebServlet("/admin/delete/usuario/index.ad")
 public class ServletEliminarUsuario extends HttpServlet implements Servlet {
 
 	/**
@@ -42,6 +42,6 @@ public class ServletEliminarUsuario extends HttpServlet implements Servlet {
 		
 		servicioUsuario.eliminar(nombre);
 		
-		resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
+		resp.sendRedirect("/tierraMedia/admin/usuarios/index.ad");
 	}
 }

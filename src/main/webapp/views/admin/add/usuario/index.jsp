@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/partials/head.jsp"></jsp:include>
+<jsp:include page="/partials/head2.jsp"></jsp:include>
 </head>
 <body class="text-white bg-dark">
 	<jsp:include page="/partials/admin/nav.jsp"></jsp:include>
-	<form action="/tierraMedia/admin/add/usuario/index.do" method="post">
+	<form action="/tierraMedia/admin/add/usuario/index.ad" method="post">
 		<div class="form-group mb-3">
 			<label for="id">ID:</label> <input class="form-control" id="id"
 				type="text" name="id" required/>

@@ -14,7 +14,7 @@ import model.Atraccion;
 import services.ServicioAtraccion;
 
 
-@WebServlet("/admin/delete/atraccion/index.do")
+@WebServlet("/admin/delete/atraccion/index.ad")
 public class ServletEliminarAtraccion extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = -7009029642364092898L;
@@ -41,7 +41,7 @@ public class ServletEliminarAtraccion extends HttpServlet implements Servlet {
 		
 		servicioAtraccion.eliminar(nombre);
 
-		resp.sendRedirect("/tierraMedia/admin/atracciones/index.do");
+		resp.sendRedirect("/tierraMedia/admin/atracciones/index.ad");
 
 	}
 }

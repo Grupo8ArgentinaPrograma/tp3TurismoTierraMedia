@@ -28,16 +28,13 @@ public class ServletItinerario extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 
-		System.out.println("Servlet");
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		ArrayList<Ofertable> productosComprados = servicioItinerario.obtenerItinerario(usuario);
 
 		if (!productosComprados.isEmpty()) {
-			System.out.println("HAYYYYYYY");
 			req.getSession().setAttribute("itinerario", productosComprados);
 			req.getSession().setAttribute("usuario", usuario);
 		}else {
-			System.out.println("NOOOOOO");
 		}
 		
 		RequestDispatcher dispatcher = getServletContext()

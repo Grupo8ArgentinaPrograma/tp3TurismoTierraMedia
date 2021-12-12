@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
 import services.ServicioUsuario;
 
-@WebServlet("/admin/edit/usuario/index.do")
+@WebServlet("/admin/edit/usuario/index.ad")
 public class ServletEditarUsuario extends HttpServlet implements Servlet {
 
 	/**
@@ -47,7 +47,7 @@ public class ServletEditarUsuario extends HttpServlet implements Servlet {
 		Usuario usuario = servicioUsuario.actualizar(nombre, dineroDisponible, tiempoDisponible, password);
 
 		if (usuario.esValido()) {
-			resp.sendRedirect("/tierraMedia/admin/usuarios/index.do");
+			resp.sendRedirect("/tierraMedia/admin/usuarios/index.ad");
 		} else {
 			req.setAttribute("usuario", usuario);
 
