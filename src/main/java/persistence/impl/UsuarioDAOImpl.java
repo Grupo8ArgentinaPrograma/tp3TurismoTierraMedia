@@ -146,6 +146,37 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	
+	public Usuario encontrarPorId(Integer id) {
+		try {
+			String sql = "SELECT Visitantes.id,visitantes.nombre,"
+					+ "Visitantes.dineroDisponible,Visitantes.tiempoDisponible," 
+					+ "TipoAtraccion.descripcion, Visitantes.password,"
+					+ "Visitantes.admin "
+					+ "FROM Visitantes " 
+					+ "JOIN TipoAtraccion " 
+					+ "on Visitantes.tipo_id = TipoAtraccion.id "
+					+ "WHERE Visitantes.id = ?";
+			Connection conn = Conexion.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+		
+			statement.setLong(1, id);
+			ResultSet resultados = statement.executeQuery();
+
+			Usuario user =  NullUser.build();
+
+			if (resultados.next()) {
+				user = aUsuario(resultados);
+			}
+			return user;
+			
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
+	
 
 	private Usuario aUsuario(ResultSet resultados) throws SQLException {
 		ItineraioDAOImpl itiDAO = DAOFactory.getItinerarioDaoImpl();

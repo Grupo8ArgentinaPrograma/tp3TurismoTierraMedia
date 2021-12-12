@@ -6,4 +6,5 @@ import persistence.commons.GenericDAO;
 public interface UsuarioDAO extends GenericDAO<Usuario> {
 	
 	public abstract Usuario encontrarPorNombre(String username);
+	public Usuario encontrarPorId(Integer id);
 }

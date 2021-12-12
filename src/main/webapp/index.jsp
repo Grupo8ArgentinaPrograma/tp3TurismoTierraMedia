@@ -5,13 +5,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<jsp:include page="partials/head.jsp"></jsp:include>
+<jsp:include page="/partials/head.jsp"></jsp:include>
 </head>
 <body>
 
-	<header class="container-fluid header p-3">
-		<div class="separador p-2"></div>
-		<jsp:include page="partials/navUsuario.jsp"></jsp:include>
+	<header >
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<a class="navbar-brand" href="#"> <img src="/tierraMedia/assets/img/2Logo_AventurasTM_Fondo_Blanco_Logo.png"
+					alt="Logo Tierra Media" height="40">
+				</a>
+				
+
+				<!-- Boton Hamburguer -->
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse text-dark" id="navbarNav">
+					<ul class="navbar-nav">
+
+						
+
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" href="/tierraMedia/itinerario2.jsp">
+								Atracciones</a>
+						
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" href="/tierraMedia/login.jsp"> Login</a></li>
+					</ul>
+				</div>
+
+			</nav>
+		</div>
+
 	</header>
 
 	<main class="container">
@@ -28,8 +58,8 @@
 		</div>
 	</main>
 
-<form action="atracciones/index.do" method="get">
-<div class="container">
+	<!-- SLIDER -->
+	<div class="container">
 		<div class="row">
 			<div class="col_sm_12">
 				<div id="carouselExampleCaptions" class="carousel slide"
@@ -41,25 +71,30 @@
 								width="620px" height="450px">
 
 							<div class="carousel-caption d-none d-md-block">
-								<h5>Aprovechá estas Oferta</h5>
+								<h2>¡Aprovecha nuestras promociones! </h2>
+								
 							</div>
 						</div>
 						
-					<c:forEach items="${atracciones}" var="atracciones">
+			
 						
-							<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
+						<c:forEach items="${atracciones}" var="atracciones">
+										
 						<div class="carousel-item">
-							<img src="${atracciones.getImagen()}" class="d-block w-100" alt="..."
-								width="620px" height="450px">
+							<img src="${atracciones.getImagen()}" class="d-block w-100" width="620px" height="450px">
 							<div class="carousel-caption d-none d-md-block">
-								<h5><c:out value="${atracciones.getNombre()}"></c:out></h5>
-								<p>Some representative placeholder content for the second
-									slide.</p>
-						<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
+								<h2><c:out value="${atracciones.getNombre()}"></c:out></h2>
+								<form action="atracciones/index.do" method="get">
+									<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
+									<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
+								</form>
 							</div>
+							
 						</div>
-					
-					</c:forEach>	
+						
+						</c:forEach>	
+						
+						
 					</div>
 					<button class="carousel-control-prev" type="button"
 						data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -75,53 +110,57 @@
 			</div>
 		</div>
 	</div>
-</form>
 
 
-	<div class="d-flex flex-wrap justify-content-around">
-
-		<c:forEach items="${atracciones}" var="atracciones">
-		<c:if test="${usuario.estaAtraccionMegusta(atracciones)}">
-			<div class="card  align-self-center" style="margin-bottom: 30px; ">
-				<form action="atracciones/index.do" method="get">
-					
-					<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
-					<img class="card-img-top" src="${atracciones.getImagen()}"	alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title" style="text-align:center" >
-							<c:out value="${atracciones.getNombre()}" />
-							$<c:out value="${atracciones.getCosto()}" />
-						</h5>
-						<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
-					</div>
-				</form>
-			</div>
-			</c:if>
-		</c:forEach>
-	</div>
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+		<div class="d-flex flex-wrap justify-content-around">
+	
+			<c:forEach items="${atracciones}" var="atracciones">
+			<c:if test="${usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)}">
+				<div class="card  align-self-center" style="margin-bottom: 30px; ">
+					<form action="atracciones/index.do" method="get">
+						
+						<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
+						<img class="card-img-top" src="${atracciones.getImagen()}"	alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title" style="text-align:center" >
+								<c:out value="${atracciones.getNombre()}" />
+								$<c:out value="${atracciones.getCosto()}" />
+							</h5>
+							<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
+						</div>
+					</form>
+				</div>
+				</c:if>
+			</c:forEach>
+		</div>
+		
+		<div class="d-flex flex-wrap justify-content-around">
+	
+			<c:forEach items="${atracciones}" var="atracciones">
+			<c:if test="${!usuario.estaAtraccionMegusta(atracciones)&&!usuario.atraccionYaComprada(atracciones)}">
+				<div class="card  align-self-center" style="margin-bottom: 30px; ">
+					<form action="atracciones/index.do" method="get">
+						<input type="hidden" name="id" value="${atracciones.getId()}">
+						<input type="hidden" name="user" value="${usuario.getNombre()}">
+						<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
+						<img class="card-img-top" src="${atracciones.getImagen()}"	alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title" style="text-align:center" >
+								<c:out value="${atracciones.getNombre()}" />
+								$<c:out value="${atracciones.getCosto()}" />
+							</h5>
+							<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
+						</div>
+					</form>
+				</div>
+				</c:if>
+			</c:forEach>
+		</div>
+</div>
 	
 	
-	
-	<div class="d-flex flex-wrap justify-content-around">
-
-		<c:forEach items="${atracciones}" var="atracciones">
-		<c:if test="${!usuario.estaAtraccionMegusta(atracciones)}">
-			<div class="card  align-self-center" style="margin-bottom: 30px;">
-				<form action="atracciones/index.do" method="get">
-					
-					<input type="hidden" name="nombre" value="${atracciones.getNombre()}"> 
-					<img class="card-img-top" src="${atracciones.getImagen()}"	alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title" style="text-align:center" >
-							<c:out value="${atracciones.getNombre()}" />
-							<c:out value="${atracciones.getCosto()}" />
-						</h5>
-						<input  class="btn btn-primary btn-lg"  style="display: block; margin: 0 auto;" type="submit" value="informacion">
-					</div>
-				</form>
-			</div>
-			</c:if>
-		</c:forEach>
-	</div>
 </body>
+<jsp:include page="/partials/footer.jsp"></jsp:include>
+
 </html>

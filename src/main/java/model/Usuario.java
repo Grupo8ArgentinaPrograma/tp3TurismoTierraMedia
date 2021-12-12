@@ -78,6 +78,16 @@ public class Usuario {
 		return valor;
 	}
 
+	public boolean atraccionYaComprada(Ofertable producto) {
+		boolean valor = false;
+		for (Ofertable elemento : this.productosComprados) {
+			valor = elemento.equals(producto) || valor;
+			
+		}
+		return valor;
+	}
+	
+	
 	public boolean estaAtraccionMegusta(Ofertable producto) {
 		return this.tipoPreferido.equals(producto.getTipo());
 	}
