@@ -42,14 +42,14 @@ public class ServletEditarAtraccion extends HttpServlet implements Servlet {
 		int cupo = Integer.parseInt(req.getParameter("cupo"));
 		
 		Atraccion atraccion = servicioAtraccion.actualizar(nombre, costo, tiempo, cupo);
-
+		System.out.println(atraccion);
 		if (atraccion.esValida()) {
 			resp.sendRedirect("/tierraMedia/admin/atracciones/index.ad");
 		} else {
 			req.setAttribute("atraccion", atraccion);
 
 			RequestDispatcher dispatcher = getServletContext()
-					.getRequestDispatcher("/views/admin/edit/atraccion/edit.jsp");
+					.getRequestDispatcher("/views/admin/edit/atraccion/index.jsp");
 			dispatcher.forward(req, resp);
 		}
 	}

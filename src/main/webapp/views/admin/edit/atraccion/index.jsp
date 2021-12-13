@@ -22,7 +22,7 @@
 
 		<div class="form-group mb-3">
 			<label for="costo">Costo:</label> <input class="form-control"
-				id="costo" type="number" name="costo" required value="${atraccion.costo}"/>
+				id="costo" type="number" name="costo" required"/>
 		</div>
 		<div class="form-group mb-3">
 			<label for="tiempo">Duración:</label> <input class="form-control"

@@ -62,9 +62,6 @@ public class Atraccion extends Ofertable {
 		if (super.getTiempo() <= 0) {
 			errores.put("tiempo", "Debe ser positivo");
 		}
-		if (super.getTiempo() > 60) {
-			errores.put("tiempo", "Excede el tiempo máximo");
-		}
 		if (this.cupo <= 0) {
 			errores.put("cupo", "Debe ser positivo");
 		}
